@@ -1,4 +1,4 @@
-# Vet's Best Friend (VBF)
+# Vet's Best Friend (VBF) - Front End
 ![license badge](https://img.shields.io/badge/license-MIT-blue)
 ## Description
 This it the front end for a vet management app.

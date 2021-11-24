@@ -27,11 +27,16 @@ const buttons = [
     },
     {
         name: "Sales",
-        style: {}
+        style: {
+            background: "#493657ff",
+            color: "white"
+        }
     },
     {
         name: "Admin",
-        style: {}
+        style: {
+            background: "#bbbe64ff"
+        }
     }
 ]
 

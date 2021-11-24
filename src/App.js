@@ -29,10 +29,10 @@ function App() {
 
   const renderPage = () => {
     if (currentPage === "patient") {
-      return <Patient logOut={logOut}/>
+      return <Patient token={token}/>
     }
     else {
-      return <Patient logOut={logOut}/>
+      return <Patient token={token}/>
     }
   }
 

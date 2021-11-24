@@ -7,6 +7,11 @@ const URL_PREFIX = "https://vetbestfriend-back.herokuapp.com"
 const API = {
     login:(userData)=>{
         return axios.post(`${URL_PREFIX}/api/users/login`,userData)
+    },
+    getAnimals:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/animals/all`,{headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

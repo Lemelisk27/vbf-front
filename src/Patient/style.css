@@ -1,0 +1,9 @@
+.zs-patients {
+    background: #659dbd;
+    min-height: calc(100vh - 100px);
+}
+
+.zs-card {
+    background: #eeeeeeff;
+    height: 85vh;
+}

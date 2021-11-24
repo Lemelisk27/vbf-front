@@ -1,14 +1,4 @@
-:root {
-    --patients: #659dbd;
-    --clients: #995fa3;
-    --appointments: #fecee9;
-}
-
-.zs-patients {
-    background: var(--patients);
+.zs-body {
     height: 100vh;
-}
-
-.zs-clients {
-    background: var(--clients)
+    margin: 0
 }

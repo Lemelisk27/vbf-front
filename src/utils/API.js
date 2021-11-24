@@ -12,6 +12,16 @@ const API = {
         return axios.get(`${URL_PREFIX}/api/animals/all`,{headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getSpecies:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/animals/species`,{headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    getBreeds:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/animals/breeds`,{headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

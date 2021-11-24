@@ -1,0 +1,7 @@
+:root {
+    --patients: #659dbd
+}
+
+.zs-body {
+    background: var(--patients);
+}

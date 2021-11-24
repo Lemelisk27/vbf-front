@@ -53,34 +53,36 @@ function LoginForm({ currentPage, setCurrentPage, setUserState }) {
     }
 
     return (
-        <div className="d-flex flex-column col-8 mx-auto mt-5" onSubmit={handleFormSubmit}>
-            <img src="https://via.placeholder.com/500.png?text=Vet+Logo" alt="Vet Logo" className="col-6 mx-auto rounded"></img>
-            <form className="d-flex flex-column mx-auto col-5 mt-5">
-                <input
-                    value={loginState.username}
-                    name="username"
-                    onChange={handleInputChange}
-                    type="text"
-                    className="mb-1 rounded"
-                    id="username"
-                    placeholder="Username">
-                </input>
-                <input
-                    value={loginState.password}
-                    name="password"
-                    onChange={handleInputChange}
-                    type="password"
-                    className="mt-1 rounded"
-                    id="password"
-                    placeholder="Password">
-                </input>
-                <button className="loginBtn col-3 mt-2 mx-auto rounded" onClick={handleFormSubmit}>Login</button>
-                {errorMessage && (
-                    <>
-                        <p className="text-center text-danger mt-2">{errorMessage}</p>
-                    </>
-                )}
-            </form>
+        <div className="zs-login col-12">
+            <div className="d-flex flex-column col-8 mx-auto pt-5" onSubmit={handleFormSubmit}>
+                <img src="https://loremflickr.com/500/500/dog,cat/all" alt="Vet Logo" className="col-6 mx-auto rounded-circle"></img>
+                <form className="d-flex flex-column mx-auto col-5 mt-5">
+                    <input
+                        value={loginState.username}
+                        name="username"
+                        onChange={handleInputChange}
+                        type="text"
+                        className="mb-1 rounded"
+                        id="username"
+                        placeholder="Username">
+                    </input>
+                    <input
+                        value={loginState.password}
+                        name="password"
+                        onChange={handleInputChange}
+                        type="password"
+                        className="mt-1 rounded"
+                        id="password"
+                        placeholder="Password">
+                    </input>
+                    <button className="loginBtn col-3 mt-2 mx-auto rounded" onClick={handleFormSubmit}>Login</button>
+                    {errorMessage && (
+                        <>
+                            <p className="text-center text-danger mt-2">{errorMessage}</p>
+                        </>
+                    )}
+                </form>
+            </div>
         </div>
     )
 }

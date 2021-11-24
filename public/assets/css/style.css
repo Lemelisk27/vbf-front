@@ -1,7 +1,14 @@
 :root {
-    --patients: #659dbd
+    --patients: #659dbd;
+    --clients: #995fa3;
+    --appointments: #fecee9;
 }
 
-.zs-body {
+.zs-patients {
     background: var(--patients);
+    height: 100vh;
+}
+
+.zs-clients {
+    background: var(--clients)
 }

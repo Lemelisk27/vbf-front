@@ -37,6 +37,8 @@ function LoginForm({ currentPage, setCurrentPage, setUserState }) {
                 id:res.data.user.id
             })
             localStorage.setItem("token",res.data.token)
+            localStorage.setItem("username",res.data.user.username)
+            localStorage.setItem("id",res.data.user.id)
         })
         .catch(err=>{
             setErrorMessage('The Username or Password is Invalid')

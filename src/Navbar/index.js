@@ -5,28 +5,38 @@ import "./style.css"
 const buttons = [
     {
         name: "Patients",
+        link: "patients",
         style: {
-            background: "#659dbd"
+            background: "#659dbd",
+            color: "black"
         }
     },
     {
         name: "Clients",
+        link: "clients",
         style: {
-            background: "#995fa3"
+            background: "#995fa3",
+            color: "black"
         }
     },
     {
         name: "Appointments",
+        link: "appointments",
         style: {
-            background: "#fecee9"
+            background: "#fecee9",
+            color: "black"
         }
     },
     {
         name: "Inventory",
-        style: {}
+        link: "inventory",
+        style: {
+            color: "black"
+        }
     },
     {
         name: "Sales",
+        link: "sales",
         style: {
             background: "#493657ff",
             color: "white"
@@ -34,8 +44,10 @@ const buttons = [
     },
     {
         name: "Admin",
+        link: "admin",
         style: {
-            background: "#bbbe64ff"
+            background: "#bbbe64ff",
+            color: "black"
         }
     }
 ]

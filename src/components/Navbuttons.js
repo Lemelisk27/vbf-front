@@ -2,7 +2,9 @@ import React from "react";
 
 function NavButtons (props) {
     return (
-        <button className="zs-nav-btn border-bottom-0 col-2" style={props.buttons.style}>{props.buttons.name}</button>
+        <a className="zs-nav-btn border border-dark border-bottom-0 col-2 text-decoration-none" href={props.buttons.link} style={props.buttons.style}>
+            <p className="text-center">{props.buttons.name}</p>
+        </a>
     )
 }
 

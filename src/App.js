@@ -4,7 +4,11 @@ import AuthRoute from "./utils/auth";
 import LoginForm from "./LoginForm";
 import Navbar from "./Navbar";
 import Patient from "./Patient";
-import Client from "./Client"
+import Client from "./Client";
+import Appointments from "./Appointments";
+import Inventory from "./Inventory";
+import Sales from "./Sales";
+import Admin from "./Admin"
 
 function App() {
   const [token, setToken] = useState('')
@@ -50,6 +54,38 @@ function App() {
               <>
                 <Navbar logOut={logOut}/>
                 <Client token={token}/>
+              </>
+            }/>
+          </Route>
+          <Route exact path="/appointments" element={<AuthRoute/>}>
+            <Route exact path="/appointments" element={
+              <>
+                <Navbar logOut={logOut}/>
+                <Appointments token={token}/>
+              </>
+            }/>
+          </Route>
+          <Route exact path="/inventory" element={<AuthRoute/>}>
+            <Route exact path="/inventory" element={
+              <>
+                <Navbar logOut={logOut}/>
+                <Inventory token={token}/>
+              </>
+            }/>
+          </Route>
+          <Route exact path="/sales" element={<AuthRoute/>}>
+            <Route exact path="/sales" element={
+              <>
+                <Navbar logOut={logOut}/>
+                <Sales token={token}/>
+              </>
+            }/>
+          </Route>
+          <Route exact path="/admin" element={<AuthRoute/>}>
+            <Route exact path="/admin" element={
+              <>
+                <Navbar logOut={logOut}/>
+                <Admin token={token}/>
               </>
             }/>
           </Route>

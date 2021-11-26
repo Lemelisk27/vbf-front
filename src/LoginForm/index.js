@@ -39,17 +39,17 @@ function LoginForm({ currentPage, setCurrentPage, setUserState }) {
             localStorage.setItem("token",res.data.token)
             localStorage.setItem("username",res.data.user.username)
             localStorage.setItem("id",res.data.user.id)
+            setLoginState({
+                ...loginState,
+                username:"",
+                password:""
+            })
+            window.location.href = "/patients"
         })
         .catch(err=>{
             setErrorMessage('The Username or Password is Invalid')
             console.log(err)
         })
-        setLoginState({
-            ...loginState,
-            username:"",
-            password:""
-        })
-        setCurrentPage("patient")
     }
 
     return (

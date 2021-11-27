@@ -2,7 +2,7 @@ import React from "react";
 
 function ListItems (props) {
     return (
-        <option>{props.options}</option>
+        <option data-index={props.id}>{props.options}</option>
     )
 }
 

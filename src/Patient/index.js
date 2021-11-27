@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
+import { Container, Modal, Tab } from "react-bootstrap";
 import API from "../utils/API";
 import "./style.css"
 import PatientList from "../components/PatientList"
 import ListItems from "../components/ListItems";
 import Auth from "../utils/auth"
+import AddPatient from "../components/AddPatient"
 
 function Patient (props) {
     const [rawAnimals, setRawAnimals] = useState([])
@@ -14,6 +16,8 @@ function Patient (props) {
     const [search, setSearch] = useState('')
     const [speciesSearch, setSpeciesSearch] = useState('All')
     const [breedSearch, setBreedSearch] = useState('All')
+    const [clients, setClients] = useState([])
+    const [showModal, setShowModal] = useState(false)
     const token = Auth.getToken()
 
     useEffect (() => {
@@ -28,6 +32,13 @@ function Patient (props) {
                 .then(res=>{
                     setRawBreeds(res.data)
                     setBreeds(res.data)
+                    API.getClients(token)
+                    .then(res=>{
+                        setClients(res.data)
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    })
                 })
                 .catch(err=>{
                     console.log(err)
@@ -91,7 +102,7 @@ function Patient (props) {
             <div className="zs-card d-flex flex-column col-11 m-auto rounded">
                 <div className="d-flex flex-row col-11 mx-auto mt-4 justify-content-between border-bottom border-dark pb-4">
                     <h1>Patients</h1>
-                    <button className="rounded bg-primary text-light col-2">Add Patient</button>
+                    <button className="rounded bg-primary text-light col-2" onClick={() => setShowModal(true)}>Add Patient</button>
                 </div>
                 <form className="d-flex justify-content-between mt-5 col-11 mx-auto">
                     <div className="d-flex flex-column col-3">
@@ -130,6 +141,20 @@ function Patient (props) {
                     </table>
                 </div>
             </div>
+            <Modal
+                size='lg'
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                aria-labelledby='add-modal'>
+                <Modal.Header closeButton className="zs-modal-head">
+                    <Modal.Title id="add-modal">
+                        <h3>Add Patient</h3>
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <AddPatient clients={clients}/>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }

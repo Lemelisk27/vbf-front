@@ -3,6 +3,7 @@ import API from "../utils/API";
 import "./style.css"
 import PatientList from "../components/PatientList"
 import ListItems from "../components/ListItems";
+import Auth from "../utils/auth"
 
 function Patient (props) {
     const [rawAnimals, setRawAnimals] = useState([])
@@ -13,50 +14,33 @@ function Patient (props) {
     const [search, setSearch] = useState('')
     const [speciesSearch, setSpeciesSearch] = useState('All')
     const [breedSearch, setBreedSearch] = useState('All')
+    const token = Auth.getToken()
 
-    useEffect(() => {
-        loadAnimals()
-        loadSpecies()
-        loadBreeds()
-    },[])
-
-    const loadAnimals = () => {
-        if(props.token) {
-            API.getAnimals(props.token)
-            .then(res=>{
-                setRawAnimals(res.data)
-                setAnimals(res.data)
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-        }
-    }
-
-    const loadSpecies = () => {
-        if(props.token) {
-            API.getSpecies(props.token)
+    useEffect (() => {
+        API.getAnimals(token)
+        .then(res=>{
+            setRawAnimals(res.data)
+            setAnimals(res.data)
+            API.getSpecies(token)
             .then(res=>{
                 setSpecies(res.data)
+                API.getBreeds(token)
+                .then(res=>{
+                    setRawBreeds(res.data)
+                    setBreeds(res.data)
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
             })
             .catch(err=>{
                 console.log(err)
             })
-        }
-    }
-
-    const loadBreeds = () => {
-        if(props.token) {
-            API.getBreeds(props.token)
-            .then(res=>{
-                setRawBreeds(res.data)
-                setBreeds(res.data)
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-        }
-    }
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    },[])
 
     const handleInputChange = (e) => {
         if (e.target.name === "search") {

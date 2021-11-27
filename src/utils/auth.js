@@ -1,12 +1,23 @@
-import React from "react";
-import { Navigate, Outlet } from "react-router";
+import decode from "jwt-decode"
 
-const AuthRoute = () => {
-    let auth = false
-    if (localStorage.getItem("token")) {
-        auth = true
+class AuthService {
+    getToken() {
+        return localStorage.getItem("token")
     }
-    return auth ? <Outlet /> : <Navigate to="/login" />
+
+    isTokenExpired(token) {
+        try {
+            const decoded = decode(token)
+            if (decoded.exp < Date.now() / 1000) {
+                return true
+            }else {
+                return false
+            }
+        }
+        catch (err) {
+            return false
+        }
+    }
 }
 
-export default AuthRoute
+export default new AuthService()

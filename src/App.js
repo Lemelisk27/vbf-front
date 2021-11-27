@@ -1,6 +1,6 @@
 import React, {useState, useEffect, Fragment} from "react";
 import {BrowserRouter as Router,Routes,Route,Navigate} from "react-router-dom"
-import AuthRoute from "./utils/auth";
+import AuthRoute from "./utils/AuthRoute";
 import LoginForm from "./LoginForm";
 import Navbar from "./Navbar";
 import Patient from "./Patient";
@@ -9,6 +9,7 @@ import Appointments from "./Appointments";
 import Inventory from "./Inventory";
 import Sales from "./Sales";
 import Admin from "./Admin"
+import Error from "./Error";
 
 function App() {
   const [token, setToken] = useState('')
@@ -45,7 +46,7 @@ function App() {
             <Route exact path="/patients" element={
               <>
                 <Navbar logOut={logOut}/>
-                <Patient token={token}/>
+                <Patient />
               </>
             }/>
           </Route>
@@ -89,6 +90,7 @@ function App() {
               </>
             }/>
           </Route>
+          <Route path="*" element={<Error />}/>
         </Routes>
       </Fragment>
     </Router>

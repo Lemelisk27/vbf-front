@@ -55,11 +55,12 @@ function Patient (props) {
     }
 
     useEffect(() => {
+        const regex = new RegExp(`${search}.*`, "i")
         if (search === "" || search === null) {
             setAnimals(rawAnimals)
         }
         else {
-            setAnimals(rawAnimals.filter(name => name.name === search))
+            setAnimals(rawAnimals.filter(name => regex.exec(name.name)))
         }
     },[search])
 

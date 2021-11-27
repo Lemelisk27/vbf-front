@@ -7,6 +7,7 @@ import ClientList from "../components/ClientList"
 function Client (props) {
     const [rawClients, setRawClients] = useState([])
     const [clients, setClients] = useState([])
+    const [clientSearch, setClientSearch] = useState('')
     const token = Auth.getToken()
 
     useEffect (() => {
@@ -21,6 +22,22 @@ function Client (props) {
         })
     },[])
 
+    const handleInputChange = (e) => {
+        if (e.target.name === "client") {
+            setClientSearch(e.target.value)
+        }
+    }
+
+    useEffect(() => {
+        const regex = new RegExp(`${clientSearch}.*`, "i")
+        if (clientSearch === "" || clientSearch === null) {
+            setClients(rawClients)
+        }
+        else {
+            setClients(rawClients.filter(name => regex.exec(name.full_name)))
+        }
+    },[clientSearch])
+
     return (
         <div className="zs-clients d-flex flex-row pt-3">
             <div className="zs-client-card d-flex flex-column col-11 m-auto rounded">
@@ -31,7 +48,7 @@ function Client (props) {
                 <form className="d-flex justify-content-start mt-5 col-11 mx-auto">
                     <div className="d-flex flex-column col-3">
                         <label>Name</label>
-                        <input type="text" name="client" placeholder="Type here to search..."></input>
+                        <input type="text" name="client" placeholder="Type here to search..." value={clientSearch} onChange={handleInputChange}></input>
                     </div>
                 </form>
                 <div className="zs-ctable col-11 mx-auto mt-5 overflow-auto">

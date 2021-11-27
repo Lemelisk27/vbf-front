@@ -22,6 +22,11 @@ const API = {
         return axios.get(`${URL_PREFIX}/api/animals/breeds`,{headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getClients:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/clients/all`,{headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

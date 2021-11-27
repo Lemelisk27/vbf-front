@@ -3,8 +3,8 @@ import { Navigate, Outlet } from "react-router";
 import Auth from "./auth"
 
 const AuthRoute = () => {
-    const expired = Auth.isTokenExpired(Auth.getToken())
-    return !expired ? <Outlet /> : <Navigate to="/login" />
+    const loggedin = Auth.isTokenCurrent(Auth.getToken())
+    return loggedin ? <Outlet /> : <Navigate to="/login" />
 }
 
 export default AuthRoute

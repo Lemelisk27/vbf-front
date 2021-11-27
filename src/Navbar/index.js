@@ -1,6 +1,9 @@
 import React from "react";
 import NavButtons from "../components/Navbuttons";
 import "./style.css"
+import Auth from "../utils/auth"
+
+const user = Auth.getUser()
 
 const buttons = [
     {
@@ -54,14 +57,17 @@ const buttons = [
 
 function Navbar (props) {
     return (
-        <div className="zs-nav d-flex col-12 justify-content-between">
-            <div className="d-flex align-items-end col-8 mx-3">
-                {buttons.map((item,i) => {
-                    return <NavButtons key={i} buttons={item} style={item.style}/>
-                })}
-            </div>
-            <div className="d-flex align-items-center mx-1">
-                <button className="rounded bg-primary text-light" onClick={props.logOut}>Log Out</button>
+        <div className="zs-nav d-flex flex-column col-12">
+            <h1 className="align-self-end mx-3">{user.firstName} {user.lastName}</h1>
+            <div className="d-flex flex-row col-12 mt-auto justify-content-between">
+                <div className="d-flex col-8 mx-3 mt-auto">
+                    {buttons.map((item,i) => {
+                        return <NavButtons key={i} buttons={item} style={item.style}/>
+                    })}
+                </div>
+                <div className="d-flex m-3">
+                    <button className="rounded bg-primary text-light" onClick={Auth.logOut}>Log Out</button>
+                </div>
             </div>
         </div>
     )

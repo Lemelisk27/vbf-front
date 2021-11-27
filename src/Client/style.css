@@ -1,15 +1,15 @@
 .zs-clients {
     background: #995fa3;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 120px);
 }
 
 .zs-client-card {
     background: #eeeeeeff;
-    height: 85vh
+    height: 80vh
 }
 
 .zs-ctable {
-    height: 55vh;
+    height: 50vh;
 }
 
 ul {

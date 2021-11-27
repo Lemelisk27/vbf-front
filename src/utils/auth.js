@@ -5,6 +5,10 @@ class AuthService {
         return localStorage.getItem("token")
     }
 
+    getUser() {
+        return localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}
+    }
+
     isTokenCurrent(token) {
         try {
             const decoded = decode(token)
@@ -17,6 +21,17 @@ class AuthService {
         catch (err) {
             return false
         }
+    }
+
+    saveUser(data) {
+        localStorage.setItem("user", JSON.stringify(data))
+    }
+
+    logOut() {
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        window.location.href = "/"
+        console.log("logged out")
     }
 }
 

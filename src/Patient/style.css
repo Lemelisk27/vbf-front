@@ -1,15 +1,15 @@
 .zs-patients {
     background: #659dbd;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 120px);
 }
 
 .zs-card {
     background: #eeeeeeff;
-    height: 85vh;
+    height: 80vh;
 }
 
 .zs-pcard {
-    height: 55vh
+    height: 50vh
 }
 
 .zs-select {

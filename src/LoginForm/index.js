@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import API from "../utils/API";
 import "./style.css"
+import Auth from "../utils/auth"
 
-function LoginForm({ currentPage, setCurrentPage, setUserState }) {
+function LoginForm(props) {
     const [errorMessage, setErrorMessage] = useState('')
     const [loginState, setLoginState] = useState({
         username:"",
@@ -31,14 +32,14 @@ function LoginForm({ currentPage, setCurrentPage, setUserState }) {
             return
         }
         API.login(loginState).then(res=>{
-            console.log(res.data)
-            setUserState({
-                username:res.data.user.username,
-                id:res.data.user.id
-            })
             localStorage.setItem("token",res.data.token)
-            localStorage.setItem("username",res.data.user.username)
-            localStorage.setItem("id",res.data.user.id)
+            const userData = {
+                id: res.data.user.id,
+                username: res.data.user.username,
+                firstName: res.data.user.first_name,
+                lastName: res.data.user.last_name
+            }
+            Auth.saveUser(userData)
             setLoginState({
                 ...loginState,
                 username:"",

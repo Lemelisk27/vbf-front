@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from "react";
+import React, {Fragment} from "react";
 import {BrowserRouter as Router,Routes,Route,Navigate} from "react-router-dom"
 import AuthRoute from "./utils/AuthRoute";
 import LoginForm from "./LoginForm";
@@ -12,27 +12,6 @@ import Admin from "./Admin"
 import Error from "./Error";
 
 function App() {
-  const [token, setToken] = useState('')
-  const [userState, setUserState] = useState({
-    username:"",
-    id:0
-  })
-
-  useEffect(() => {
-    setToken(localStorage.getItem("token"))
-    setUserState({
-      username:localStorage.getItem("username"),
-      id:localStorage.getItem("id")
-    })
-  },[])
-
-  const logOut = () => {
-    setUserState({username:"",id:0})
-    setToken("")
-    localStorage.removeItem("token")
-    localStorage.removeItem("username")
-    localStorage.removeItem("id")
-  }
 
   return (
     <Router>
@@ -41,11 +20,11 @@ function App() {
           <Route exact path="/" element={<AuthRoute/>}>
             <Route exact path="/" element={<Navigate to="/patients"/>}/>
           </Route>
-          <Route exact path="/login" element={<LoginForm userState={userState} setUserState={setUserState}/>}/>
+          <Route exact path="/login" element={<LoginForm />}/>
           <Route exact path="/patients" element={<AuthRoute/>}>
             <Route exact path="/patients" element={
               <>
-                <Navbar logOut={logOut}/>
+                <Navbar />
                 <Patient />
               </>
             }/>
@@ -53,40 +32,40 @@ function App() {
           <Route exact path="/clients" element={<AuthRoute/>}>
             <Route exact path="/clients" element={
               <>
-                <Navbar logOut={logOut}/>
-                <Client token={token}/>
+                <Navbar />
+                <Client />
               </>
             }/>
           </Route>
           <Route exact path="/appointments" element={<AuthRoute/>}>
             <Route exact path="/appointments" element={
               <>
-                <Navbar logOut={logOut}/>
-                <Appointments token={token}/>
+                <Navbar />
+                <Appointments />
               </>
             }/>
           </Route>
           <Route exact path="/inventory" element={<AuthRoute/>}>
             <Route exact path="/inventory" element={
               <>
-                <Navbar logOut={logOut}/>
-                <Inventory token={token}/>
+                <Navbar />
+                <Inventory />
               </>
             }/>
           </Route>
           <Route exact path="/sales" element={<AuthRoute/>}>
             <Route exact path="/sales" element={
               <>
-                <Navbar logOut={logOut}/>
-                <Sales token={token}/>
+                <Navbar />
+                <Sales />
               </>
             }/>
           </Route>
           <Route exact path="/admin" element={<AuthRoute/>}>
             <Route exact path="/admin" element={
               <>
-                <Navbar logOut={logOut}/>
-                <Admin token={token}/>
+                <Navbar />
+                <Admin />
               </>
             }/>
           </Route>

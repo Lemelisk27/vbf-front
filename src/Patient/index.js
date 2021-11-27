@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Container, Modal, Tab } from "react-bootstrap";
+import {Modal} from "react-bootstrap";
 import API from "../utils/API";
 import "./style.css"
 import PatientList from "../components/PatientList"

@@ -34,6 +34,13 @@ const API = {
                 "Authorization": `Bearer ${tkn}`
             }
         })
+    },
+    addClient:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/clients`, data,{
+            headers: {
+                "Authorization": `Bearer ${tkn}`
+            }
+        })
     }
 }
 

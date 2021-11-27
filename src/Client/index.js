@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from "react";
+import {Modal} from "react-bootstrap";
 import "./style.css"
 import API from "../utils/API";
 import Auth from "../utils/auth"
 import ClientList from "../components/ClientList"
+import AddClient from "../components/AddClient"
 
 function Client (props) {
     const [rawClients, setRawClients] = useState([])
     const [clients, setClients] = useState([])
     const [clientSearch, setClientSearch] = useState('')
+    const [showModal, setShowModal] = useState(false)
     const token = Auth.getToken()
 
     useEffect (() => {
@@ -21,6 +24,18 @@ function Client (props) {
             console.log(err)
         })
     },[])
+
+    useEffect (() => {
+        API.getClients(token)
+        .then(res=>{
+            console.log(res.data)
+            setRawClients(res.data)
+            setClients(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    },[showModal])
 
     const handleInputChange = (e) => {
         if (e.target.name === "client") {
@@ -43,7 +58,7 @@ function Client (props) {
             <div className="zs-client-card d-flex flex-column col-11 m-auto rounded">
                 <div className="d-flex flex-row col-11 mx-auto mt-4 justify-content-between border-bottom border-dark pb-4">
                     <h1>Clients</h1>
-                    <button className="rounded bg-primary text-light col-2">Add Client</button>
+                    <button className="rounded bg-primary text-light col-2" onClick={() => setShowModal(true)}>Add Client</button>
                 </div>
                 <form className="d-flex justify-content-start mt-5 col-11 mx-auto">
                     <div className="d-flex flex-column col-3">
@@ -66,6 +81,20 @@ function Client (props) {
                     </table>
                 </div>
             </div>
+            <Modal
+                size='lg'
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                aria-labelledby='add-modal'>
+                <Modal.Header closeButton className="zs-modal-client">
+                    <Modal.Title id="add-modal">
+                        <h3>Add Client</h3>
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <AddClient setShowModal={setShowModal}/>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }

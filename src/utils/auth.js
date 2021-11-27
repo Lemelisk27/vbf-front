@@ -31,7 +31,6 @@ class AuthService {
         localStorage.removeItem("token")
         localStorage.removeItem("user")
         window.location.href = "/"
-        console.log("logged out")
     }
 }
 

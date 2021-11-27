@@ -53,6 +53,39 @@ function Patient (props) {
         })
     },[])
 
+    useEffect (() => {
+        API.getAnimals(token)
+        .then(res=>{
+            setRawAnimals(res.data)
+            setAnimals(res.data)
+            API.getSpecies(token)
+            .then(res=>{
+                setSpecies(res.data)
+                API.getBreeds(token)
+                .then(res=>{
+                    setRawBreeds(res.data)
+                    setBreeds(res.data)
+                    API.getClients(token)
+                    .then(res=>{
+                        setClients(res.data)
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    })
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    },[showModal])
+
     const handleInputChange = (e) => {
         if (e.target.name === "search") {
             setSearch(e.target.value)
@@ -152,7 +185,7 @@ function Patient (props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <AddPatient clients={clients}/>
+                    <AddPatient clients={clients} setShowModal={setShowModal} species={species} rawBreeds={rawBreeds}/>
                 </Modal.Body>
             </Modal>
         </div>

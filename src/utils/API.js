@@ -27,6 +27,13 @@ const API = {
         return axios.get(`${URL_PREFIX}/api/clients/all`,{headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    addAnimal:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/animals`,data,{
+            headers:{
+                "Authorization": `Bearer ${tkn}`
+            }
+        })
     }
 }
 

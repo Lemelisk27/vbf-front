@@ -2,3 +2,16 @@
     background: #995fa3;
     min-height: calc(100vh - 100px);
 }
+
+.zs-client-card {
+    background: #eeeeeeff;
+    height: 85vh
+}
+
+.zs-ctable {
+    height: 55vh;
+}
+
+ul {
+    list-style-type: none;
+}

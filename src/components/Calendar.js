@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Auth from "../utils/auth"
 import API from "../utils/API"
 import Paper from '@material-ui/core/Paper';
-import { ViewState } from '@devexpress/dx-react-scheduler';
+import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
   DayView,
@@ -15,17 +15,42 @@ import {
   ViewSwitcher,
   AppointmentTooltip,
   AppointmentForm,
+  EditRecurrenceMenu,
+  ConfirmationDialog,
 } from '@devexpress/dx-react-scheduler-material-ui';
 
 function Calendar (props) {
-    const token = Auth.getToken()
     const [appointments, setAppointments] = useState([])
+    const [addedAppointment, changeAddedAppointment] = useState({})
+    const [appointmentChanges, changeAppointmentChanges] = useState({})
+    const [editingAppointment, changeEditingAppointment] = useState(undefined)
+    const token = Auth.getToken()
+
+    const commitChanges = ({ added, changed, deleted }) => {
+        const newToken = Auth.getToken()
+        if (added) {
+            console.log("added")
+            console.log(added)
+        }
+        if (changed) {
+            console.log("changed")
+            console.log(changed)
+        }
+        if (deleted !== undefined) {
+            API.deleteAppt(deleted,newToken)
+            .then(res=>{
+                console.log(res)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        }
+    }
 
     useEffect (() => {
         API.getAppts(token)
         .then(res=>{
             setAppointments(res.data)
-            console.log(res.data)
         })
     },[])
 
@@ -37,6 +62,15 @@ function Calendar (props) {
             >
                 <ViewState
                     defaultCurrentViewName="Week"
+                />
+                <EditingState
+                    onCommitChanges={commitChanges}
+                    addedAppointment={addedAppointment}
+                    onAddedAppointmentChange={changeAddedAppointment}
+                    appointmentChanges={appointmentChanges}
+                    onAppointmentChangesChange={changeAppointmentChanges}
+                    editingAppointment={editingAppointment}
+                    onEditingAppointmentChange={changeEditingAppointment}
                 />
                 <DayView
                     startDayHour={8}
@@ -51,10 +85,13 @@ function Calendar (props) {
                 <ViewSwitcher />
                 <DateNavigator />
                 <TodayButton />
+                <EditRecurrenceMenu />
+                <ConfirmationDialog />
                 <Appointments />
                 <AppointmentTooltip
                     showCloseButton
                     showOpenButton
+                    showDeleteButton
                 />
                 <AppointmentForm />
             </Scheduler>

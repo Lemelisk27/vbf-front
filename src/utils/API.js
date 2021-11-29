@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// const URL_PREFIX = "http://localhost:3001"
+const URL_PREFIX = "http://localhost:3001"
 
-const URL_PREFIX = "https://vetbestfriend-back.herokuapp.com"
+// const URL_PREFIX = "https://vetbestfriend-back.herokuapp.com"
 
 const API = {
     login:(userData)=>{
@@ -43,7 +43,12 @@ const API = {
         })
     },
     getAppts:(tkn)=>{
-        return axios.get(`${URL_PREFIX}/api/appointments`,{headers:{
+        return axios.get(`${URL_PREFIX}/api/appointments/all`,{headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    deleteAppt:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/appointments/${id}`,{headers:{
             "Authorization": `Bearer ${tkn}`
         }})
     }

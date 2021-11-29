@@ -25,6 +25,7 @@ function Patient (props) {
         .then(res=>{
             setRawAnimals(res.data)
             setAnimals(res.data)
+            console.log(res.data)
             API.getSpecies(token)
             .then(res=>{
                 setSpecies(res.data)
@@ -166,10 +167,12 @@ function Patient (props) {
                                 <th scope="col">Breed</th>
                                 <th scope="col">Client</th>
                                 <th scope="col">Phone</th>
+                                <th scope="col">Last Appointment</th>
+                                <th scope="col">Next Appointment</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {animals.map(item=><PatientList key={item.id} animal={item}/>)}
+                            {animals.map(item=><PatientList key={item.id} animal={item} next={item.Appts[0].nextAppt} last={item.prevAppt[0].lastAppt}/>)}
                         </tbody>
                     </table>
                 </div>

@@ -8,8 +8,8 @@ function PatientList (props) {
             <td>{props.animal.Breed.breed}</td>
             <td>{props.animal.Client.client}</td>
             <td>{props.animal.Client.phone}</td>
-            <td>{props.last}</td>
-            <td>{props.next}</td>
+            <td className="text-center">{props.last}</td>
+            <td className="text-center">{props.next}</td>
         </tr>
     )
 }

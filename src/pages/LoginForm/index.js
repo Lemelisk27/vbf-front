@@ -56,7 +56,7 @@ function LoginForm(props) {
     return (
         <div className="zs-login col-12">
             <div className="d-flex flex-column col-8 mx-auto pt-5" onSubmit={handleFormSubmit}>
-                <img src="https://loremflickr.com/500/500/dog,cat/all" alt="Vet Logo" className="col-6 mx-auto rounded-circle"></img>
+                <img src="assets/images/vet_login.png" alt="Vet Logo" className="col-5 mx-auto"></img>
                 <form className="d-flex flex-column mx-auto col-5 mt-5">
                     <input
                         value={loginState.username}

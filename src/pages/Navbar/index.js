@@ -12,7 +12,8 @@ const buttons = [
         style: {
             background: "#659dbd",
             color: "black"
-        }
+        },
+        img: "assets/images/patients.png"
     },
     {
         name: "Clients",
@@ -20,22 +21,25 @@ const buttons = [
         style: {
             background: "#995fa3",
             color: "black"
-        }
+        },
+        img: "assets/images/clients.png"
     },
     {
-        name: "Appointments",
-        link: "appointments",
+        name: "Calendar",
+        link: "calendar",
         style: {
             background: "#fecee9",
             color: "black"
-        }
+        },
+        img: "assets/images/appointments.png"
     },
     {
         name: "Inventory",
         link: "inventory",
         style: {
             color: "black"
-        }
+        },
+        img: "assets/images/inventory.png"
     },
     {
         name: "Sales",
@@ -43,7 +47,8 @@ const buttons = [
         style: {
             background: "#493657ff",
             color: "white"
-        }
+        },
+        img: "assets/images/sales.png"
     },
     {
         name: "Admin",
@@ -51,7 +56,8 @@ const buttons = [
         style: {
             background: "#bbbe64ff",
             color: "black"
-        }
+        },
+        img: "assets/images/admin.png"
     }
 ]
 

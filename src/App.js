@@ -37,8 +37,8 @@ function App() {
               </>
             }/>
           </Route>
-          <Route exact path="/appointments" element={<AuthRoute/>}>
-            <Route exact path="/appointments" element={
+          <Route exact path="/calendar" element={<AuthRoute/>}>
+            <Route exact path="/calendar" element={
               <>
                 <Navbar />
                 <Appointments />

@@ -2,3 +2,8 @@
     background: #fecee9;
     min-height: calc(100vh - 120px);
 }
+
+.zs-appt-card {
+    background: #eeeeeeff;
+    height: 80vh
+}

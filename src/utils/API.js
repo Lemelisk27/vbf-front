@@ -41,6 +41,11 @@ const API = {
                 "Authorization": `Bearer ${tkn}`
             }
         })
+    },
+    getAppts:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/appointments`,{headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

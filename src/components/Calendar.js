@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { ViewState, EditingState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
+  Resources,
   DayView,
   WeekView,
   MonthView,
@@ -31,12 +32,44 @@ function Calendar (props) {
 
     const commitChanges = ({ added, changed, deleted }) => {
         if (added) {
-            console.log("added")
-            console.log(added)
+            const addData = {
+                title: added.title,
+                startDate: added.startDate,
+                endDate: added.endDate,
+                notes: added.notes,
+                AnimalId: added.AnimalId,
+                rRule: added.rRule,
+                allDay: added.allDay                
+            }
+            API.addAppt(addData,token)
+            .then(res=>{
+                console.log(res)
+                setUpdatePage(!updatePage)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
         }
         if (changed) {
-            console.log("changed")
-            console.log(changed)
+            const changedId = Object.keys(changed)[0]
+            const changeData = {
+                id: changedId,
+                title: changed[changedId].title,
+                startDate: changed[changedId].startDate,
+                endDate: changed[changedId].endDate,
+                notes: changed[changedId].notes,
+                AnimalId: changed[changedId].AnimalId,
+                rRule: changed[changedId].rRule,
+                allDay: changed[changedId].allDay
+            }
+            API.editAppt(changeData,token)
+            .then(res=>{
+                console.log(res)
+                setUpdatePage(!updatePage)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
         }
         if (deleted !== undefined) {
             API.deleteAppt(deleted,token)
@@ -70,7 +103,7 @@ function Calendar (props) {
         })
     },[updatePage])
 
-    const style = ({ palette }) => ({
+    const style = () => ({
         textCenter: {
             textAlign: 'center'
         }
@@ -80,7 +113,7 @@ function Calendar (props) {
         <AppointmentTooltip.Content {...restProps} appointmentData={appointmentData}>
             <Grid container alignItems="center">
                 <Grid className="mx-auto col-11">
-                    <h5 className="my-1 border-bottom border-secondary">{appointmentData.Animal.name}</h5>
+                    <h5 className="my-1 border-bottom border-secondary"></h5>
                     <div className="col-11 mx-auto">
                         <p className="mb-0">Species: {appointmentData.Animal.Species.species}</p>
                         <p className="mb-0">Breed: {appointmentData.Animal.Breed.breed}</p>
@@ -135,6 +168,10 @@ function Calendar (props) {
                     contentComponent={Content}
                 />
                 <AppointmentForm />
+                <Resources
+                    data={props.resourceData}
+                    mainResourceName="AnimalId"
+                />
             </Scheduler>
         </Paper>
     )

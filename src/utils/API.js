@@ -51,6 +51,16 @@ const API = {
         return axios.delete(`${URL_PREFIX}/api/appointments/${id}`,{headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    editAppt:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/appointments`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    addAppt:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/appointments`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

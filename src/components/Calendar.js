@@ -39,11 +39,11 @@ function Calendar (props) {
                     defaultCurrentViewName="Week"
                 />
                 <DayView
-                    startDayHour={9}
+                    startDayHour={8}
                     endDayHour={19}
                 />
                 <WeekView
-                    startDayHour={9}
+                    startDayHour={8}
                     endDayHour={19}
                 />
                 <MonthView />

@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {Modal} from "react-bootstrap";
-import API from "../utils/API";
+import API from "../../utils/API";
 import "./style.css"
-import PatientList from "../components/PatientList"
-import ListItems from "../components/ListItems";
-import Auth from "../utils/auth"
-import AddPatient from "../components/AddPatient"
+import PatientList from "../../components/PatientList"
+import ListItems from "../../components/ListItems";
+import Auth from "../../utils/auth"
+import AddPatient from "../../components/AddPatient"
 
 function Patient (props) {
     const [rawAnimals, setRawAnimals] = useState([])

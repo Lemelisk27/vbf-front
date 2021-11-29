@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import API from "../utils/API";
+import API from "../../utils/API";
 import "./style.css"
-import Auth from "../utils/auth"
+import Auth from "../../utils/auth"
 
 function LoginForm(props) {
     const [errorMessage, setErrorMessage] = useState('')

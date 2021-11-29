@@ -1,7 +1,7 @@
 import React from "react";
-import NavButtons from "../components/Navbuttons";
+import NavButtons from "../../components/Navbuttons";
 import "./style.css"
-import Auth from "../utils/auth"
+import Auth from "../../utils/auth"
 
 const user = Auth.getUser()
 

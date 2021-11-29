@@ -1,15 +1,15 @@
 import React, {Fragment} from "react";
 import {BrowserRouter as Router,Routes,Route,Navigate} from "react-router-dom"
 import AuthRoute from "./utils/AuthRoute";
-import LoginForm from "./LoginForm";
-import Navbar from "./Navbar";
-import Patient from "./Patient";
-import Client from "./Client";
-import Appointments from "./Appointments";
-import Inventory from "./Inventory";
-import Sales from "./Sales";
-import Admin from "./Admin"
-import Error from "./Error";
+import LoginForm from "./pages/LoginForm";
+import Navbar from "./pages/Navbar";
+import Patient from "./pages/Patient";
+import Client from "./pages/Client";
+import Appointments from "./pages/Appointments";
+import Inventory from "./pages/Inventory";
+import Sales from "./pages/Sales";
+import Admin from "./pages/Admin"
+import Error from "./pages/Error";
 
 function App() {
 

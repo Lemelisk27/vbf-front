@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import "./style.css"
-import API from "../utils/API"
-import Auth from "../utils/auth"
-import Calendar from "../components/Calendar"
+import API from "../../utils/API"
+import Auth from "../../utils/auth"
+import Calendar from "../../components/Calendar"
 import {blue} from '@material-ui/core/colors'
 
 function Appointments (props) {

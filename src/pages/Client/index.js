@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {Modal} from "react-bootstrap";
 import "./style.css"
-import API from "../utils/API";
-import Auth from "../utils/auth"
-import ClientList from "../components/ClientList"
-import AddClient from "../components/AddClient"
+import API from "../../utils/API"
+import Auth from "../../utils/auth"
+import ClientList from "../../components/ClientList"
+import AddClient from "../../components/AddClient"
 
 function Client (props) {
     const [rawClients, setRawClients] = useState([])

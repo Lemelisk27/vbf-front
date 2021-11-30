@@ -25,7 +25,6 @@ function Patient (props) {
         .then(res=>{
             setRawAnimals(res.data)
             setAnimals(res.data)
-            console.log(res.data)
             API.getSpecies(token)
             .then(res=>{
                 setSpecies(res.data)
@@ -131,6 +130,18 @@ function Patient (props) {
         }
     },[breedSearch])
 
+    const trimAnimals = () => {
+        for (let i = 0; i < animals.length; i++) {
+            if (animals[i].Appts[0] === undefined) {
+                animals[i].Appts[0] = {nextAppt: "None"}
+            }
+            if (animals[i].prevAppt[0] === undefined) {
+                animals[i].prevAppt[0] = {lastAppt: "None"}
+            }
+        }
+        return animals
+    }
+
     return (
         <div className="zs-patients d-flex flex-row pt-3">
             <div className="zs-card d-flex flex-column col-11 m-auto rounded">
@@ -172,7 +183,7 @@ function Patient (props) {
                             </tr>
                         </thead>
                         <tbody>
-                            {animals.map(item=><PatientList key={item.id} animal={item} next={item.Appts[0].nextAppt} last={item.prevAppt[0].lastAppt}/>)}
+                            {trimAnimals().map(item=><PatientList key={item.id} animal={item} next={item.Appts[0].nextAppt} last={item.prevAppt[0].lastAppt}/>)}
                         </tbody>
                     </table>
                 </div>

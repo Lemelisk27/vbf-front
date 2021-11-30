@@ -8,56 +8,56 @@ const user = Auth.getUser()
 const buttons = [
     {
         name: "Patients",
-        link: "patients",
+        link: "/patients",
         style: {
             background: "#659dbd",
             color: "black"
         },
-        img: "assets/images/patients.png"
+        img: "/assets/images/patients.png"
     },
     {
         name: "Clients",
-        link: "clients",
+        link: "/clients",
         style: {
             background: "#995fa3",
             color: "black"
         },
-        img: "assets/images/clients.png"
+        img: "/assets/images/clients.png"
     },
     {
         name: "Calendar",
-        link: "calendar",
+        link: "/calendar",
         style: {
             background: "#fecee9",
             color: "black"
         },
-        img: "assets/images/appointments.png"
+        img: "/assets/images/appointments.png"
     },
     {
         name: "Inventory",
-        link: "inventory",
+        link: "/inventory",
         style: {
             color: "black"
         },
-        img: "assets/images/inventory.png"
+        img: "/assets/images/inventory.png"
     },
     {
         name: "Sales",
-        link: "sales",
+        link: "/sales",
         style: {
             background: "#493657ff",
             color: "white"
         },
-        img: "assets/images/sales.png"
+        img: "/assets/images/sales.png"
     },
     {
         name: "Admin",
-        link: "admin",
+        link: "/admin",
         style: {
             background: "#bbbe64ff",
             color: "black"
         },
-        img: "assets/images/admin.png"
+        img: "/assets/images/admin.png"
     }
 ]
 

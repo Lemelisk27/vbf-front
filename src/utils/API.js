@@ -61,6 +61,11 @@ const API = {
         return axios.post(`${URL_PREFIX}/api/appointments`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getAnimalDetails:(id,tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/animals/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

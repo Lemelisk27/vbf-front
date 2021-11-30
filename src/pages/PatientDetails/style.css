@@ -1,0 +1,13 @@
+.zs-details {
+    background: #659dbd;
+    min-height: calc(100vh - 120px);
+}
+
+.zs-card {
+    background: #eeeeeeff;
+    height: 80vh;
+}
+
+ul {
+    list-style-type: disc;
+}

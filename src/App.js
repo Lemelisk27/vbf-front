@@ -10,6 +10,7 @@ import Inventory from "./pages/Inventory";
 import Sales from "./pages/Sales";
 import Admin from "./pages/Admin"
 import Error from "./pages/Error";
+import PatientDetails from "./pages/PatientDetails";
 
 function App() {
 
@@ -26,6 +27,14 @@ function App() {
               <>
                 <Navbar />
                 <Patient />
+              </>
+            }/>
+          </Route>
+          <Route exact path="/patients/:id" element={<AuthRoute/>}>
+            <Route exact path="/patients/:id" element={
+              <>
+                <Navbar />
+                <PatientDetails />
               </>
             }/>
           </Route>

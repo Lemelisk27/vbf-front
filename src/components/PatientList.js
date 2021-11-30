@@ -7,7 +7,7 @@ function PatientList (props) {
             <th scope="row"><Link to={`/patients/${props.animal.id}`}>{props.animal.name}</Link></th>
             <td>{props.animal.Species.species}</td>
             <td>{props.animal.Breed.breed}</td>
-            <td>{props.animal.Client.client}</td>
+            <td><Link to={`/clients/${props.animal.Client.id}`}>{props.animal.Client.client}</Link></td>
             <td>{props.animal.Client.phone}</td>
             <td className="text-center">{props.last}</td>
             <td className="text-center">{props.next}</td>           

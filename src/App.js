@@ -11,6 +11,7 @@ import Sales from "./pages/Sales";
 import Admin from "./pages/Admin"
 import Error from "./pages/Error";
 import PatientDetails from "./pages/PatientDetails";
+import ClientDetails from "./pages/ClientDetails"
 
 function App() {
 
@@ -43,6 +44,14 @@ function App() {
               <>
                 <Navbar />
                 <Client />
+              </>
+            }/>
+          </Route>
+          <Route exact path="/clients/:id" element={<AuthRoute/>}>
+            <Route exact path="/clients/:id" element={
+              <>
+                <Navbar />
+                <ClientDetails />
               </>
             }/>
           </Route>

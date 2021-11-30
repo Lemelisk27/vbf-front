@@ -18,7 +18,6 @@ function PatientDetails (props) {
         API.getAnimalDetails(id,token)
         .then(res=>{
             setDetails(res.data)
-            console.log(res.data)
             setSpecies(res.data.Species.species)
             setBreed(res.data.Breed.breed)
             if (res.data.Allergies.length > 0) {

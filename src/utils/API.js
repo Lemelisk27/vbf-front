@@ -66,6 +66,11 @@ const API = {
         return axios.get(`${URL_PREFIX}/api/animals/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getClientDetails:(id,tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/clients/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

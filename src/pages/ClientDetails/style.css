@@ -1,0 +1,9 @@
+.zs-clients {
+    background: #995fa3;
+    min-height: calc(100vh - 120px);
+}
+
+.zs-client-card {
+    background: #eeeeeeff;
+    height: 80vh
+}

@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from "react";
+import {Modal} from "react-bootstrap"
 import "./style.css"
 import {useParams} from "react-router-dom"
 import Auth from "../../utils/auth"
 import API from "../../utils/API"
 import List from "../../components/List"
+import EditPatient from "../../components/EditPatient";
 
 function PatientDetails (props) {
     const {id} = useParams()
     const token = Auth.getToken()
+    const [showModal, setShowModal] = useState(false)
     const [details, setDetails] = useState([])
     const [allergies, setAllergies] = useState(false)
     const [allergyList, setAllergyList] = useState([])
@@ -28,7 +31,7 @@ function PatientDetails (props) {
         .catch(err=>{
             console.log(err)
         })
-    },[id])
+    },[id, showModal])
 
     return (
         <div className="zs-details d-flex flex-row pt-3">
@@ -38,7 +41,7 @@ function PatientDetails (props) {
                     {details.warn && (
                         <h3 className="text-danger">Warning</h3>
                     )}
-                    <button className="rounded bg-primary text-light col-2">Edit {details.name}</button>
+                    <button className="rounded bg-primary text-light col-2" onClick={() => setShowModal(true)}>Edit {details.name}</button>
                 </div>
                 <div className="d-flex justify-content-between mt-5 col-11 mx-auto">
                     {details.img && (
@@ -69,6 +72,20 @@ function PatientDetails (props) {
                     <p className="mb-0">Gender: {details.gender}</p>
                 </div>
             </div>
+            <Modal
+                size='lg'
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                aria-labelledby='add-modal'>
+                <Modal.Header closeButton className="zs-modal-head">
+                    <Modal.Title id="add-modal">
+                        <h3>Edit {details.name}</h3>
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <EditPatient animal={details} setShowModal={setShowModal}/>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }

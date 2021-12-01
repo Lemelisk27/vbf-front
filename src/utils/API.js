@@ -101,6 +101,11 @@ const API = {
         return axios.post(`${URL_PREFIX}/api/allergies/joins`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    deleteClient:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/clients/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

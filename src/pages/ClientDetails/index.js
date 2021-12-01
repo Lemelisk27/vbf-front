@@ -5,12 +5,14 @@ import {useParams} from "react-router-dom"
 import Auth from "../../utils/auth"
 import API from "../../utils/API"
 import EditClient from "../../components/EditClient"
+import DeleteClient from "../../components/DeleteClient"
 
 function ClientDetails (props) {
     const {id} = useParams()
     const token = Auth.getToken()
     const [showModal, setShowModal] = useState(false)
     const [client, setClient] = useState([])
+    const [deleteClientPage, setDeleteClientPage] = useState(false)
 
     useEffect (() => {
         API.getClientDetails(id,token)
@@ -47,7 +49,7 @@ function ClientDetails (props) {
                     <h3>Edit {client.first_name} {client.last_name}</h3>
                 </Modal.Header>
                 <Modal.Body>
-                    <EditClient client={client} setShowModal={setShowModal}/>
+                    {!deleteClientPage ? <EditClient client={client} setShowModal={setShowModal} setDeleteClientPage={setDeleteClientPage}/> : <DeleteClient setDeleteClientPage={setDeleteClientPage} firstName={client.first_name} lastName={client.last_name} id={client.id} setShowModal={setShowModal}/>}
                 </Modal.Body>
             </Modal>
         </div>

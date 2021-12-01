@@ -19,7 +19,9 @@ Required Dependencies:
 - React-scripts
 - Web-vitals
 ## Usage
-Website - [Vet's Best Friend](https://vetbestfriend.herokuapp.com/)
+Website - [Vet's Best Friend](https://vetbestfriend.herokuapp.com/)  
+Username: cfuller  
+Password: password
 ## Credits
 Zach Smith - [GitHub Profile](https://github.com/Lemelisk27@gmail.com)  
 ## License

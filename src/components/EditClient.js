@@ -208,6 +208,7 @@ function EditClient (props) {
             </div>
             <div className="d-flex col-12 mt-3">
                 <button className="bg-primary text-light rounded mx-auto col-3" onClick={handleFormSubmit}>Submit</button>
+                <button className="bg-danger text-light rounded mx-auto col-3" onClick={() => props.setDeleteClientPage(true)}>Delete {props.client.first_name} {props.client.last_name}</button>
             </div>
         </form>
     )

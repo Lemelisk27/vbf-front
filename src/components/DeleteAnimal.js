@@ -10,8 +10,8 @@ function DeleteAnimal (props) {
         API.deleteAnimal(props.id,token)
         .then(res=>{
             console.log(res)
-            props.setDeleteAnimalPage(false)
             props.setShowModal(false)
+            props.setDeleteAnimalPage(false)
             window.location.href = "/patients"
         })
         .catch(err=>{

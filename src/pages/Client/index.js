@@ -23,6 +23,7 @@ function Client (props) {
         .catch(err=>{
             console.log(err)
         })
+    // eslint-disable-next-line
     },[])
 
     useEffect (() => {
@@ -35,6 +36,7 @@ function Client (props) {
         .catch(err=>{
             console.log(err)
         })
+    // eslint-disable-next-line
     },[showModal])
 
     const handleInputChange = (e) => {
@@ -51,6 +53,7 @@ function Client (props) {
         else {
             setClients(rawClients.filter(name => regex.exec(name.full_name)))
         }
+    // eslint-disable-next-line
     },[clientSearch])
 
     return (

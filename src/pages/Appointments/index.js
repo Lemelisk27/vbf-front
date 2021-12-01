@@ -31,6 +31,7 @@ function Appointments (props) {
                 setResourceData(lastArray)
             }
         })
+    // eslint-disable-next-line
     },[])
 
     return (

@@ -81,6 +81,7 @@ function AddPatient (props) {
         else {
             setBreeds(rawBreeds.filter(species => species.Species.species === animalSpecies))
         }
+    // eslint-disable-next-line
     },[animalSpecies])
 
     const handleFormSubmit = (e) => {

@@ -21,8 +21,8 @@ function DeleteClient (props) {
 
     const cancelDelete = (e) => {
         e.preventDefault()
-        props.setDeleteClientPage(false)
         props.setShowModal(false)
+        props.setDeleteClientPage(false)
     }
 
     return (

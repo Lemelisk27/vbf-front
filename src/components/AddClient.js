@@ -15,6 +15,7 @@ function AddClient (props) {
     const [stateError, setStateError] = useState(false)
     const [zip, setZip] = useState("")
     const [zipError, setZipError] = useState(false)
+    // eslint-disable-next-line
     const emailVal = /^[A-z0-9_\.-]+@[\dA-z\.-]+\.[A-z\.]{2,6}$/
     const [email, setEmail] = useState("")
     const [emailError, setEmailError] = useState(false)

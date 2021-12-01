@@ -35,6 +35,7 @@ function PatientDetails (props) {
         .catch(err=>{
             console.log(err)
         })
+    // eslint-disable-next-line
     },[id, showModal])
 
     return (
@@ -47,12 +48,12 @@ function PatientDetails (props) {
                     )}
                     <button className="rounded bg-primary text-light col-2" onClick={() => setShowModal(true)}>Edit {details.name}</button>
                 </div>
-                <div className="d-flex justify-content-between mt-5 col-11 mx-auto">
+                <div className="d-flex mt-5 col-11 mx-auto justify-content-between">
                     {details.img && (
                         <img src={details.img} alt="Animal Pic" className="col-2"></img>
                     )}
                     {allergies && (
-                        <div className="d-flex border border-dark px-3 pt-2 col-2">
+                        <div className="d-flex border border-dark p-2 col-2 align-self-start">
                             <div className="mx-auto">
                                 <p className="mb-0">Allergies:</p>
                                 <ul className="mb-0 text-danger">

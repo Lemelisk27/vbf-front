@@ -23,6 +23,7 @@ function ClientDetails (props) {
         .catch(err=>{
             console.log(err)
         })
+    // eslint-disable-next-line
     },[id, showModal])
 
     return (

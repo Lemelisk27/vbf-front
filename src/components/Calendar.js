@@ -91,6 +91,7 @@ function Calendar (props) {
         .catch(err=>{
             console.log(err)
         })
+    // eslint-disable-next-line
     },[])
 
     useEffect (() => {
@@ -101,6 +102,7 @@ function Calendar (props) {
         .catch(err=>{
             console.log(err)
         })
+    // eslint-disable-next-line
     },[updatePage])
 
     const style = () => ({
@@ -113,7 +115,6 @@ function Calendar (props) {
         <AppointmentTooltip.Content {...restProps} appointmentData={appointmentData}>
             <Grid container alignItems="center">
                 <Grid className="mx-auto col-11">
-                    <h5 className="my-1 border-bottom border-secondary"></h5>
                     <div className="col-11 mx-auto">
                         <p className="mb-0">Species: {appointmentData.Animal.Species.species}</p>
                         <p className="mb-0">Breed: {appointmentData.Animal.Breed.breed}</p>

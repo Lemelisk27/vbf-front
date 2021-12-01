@@ -51,6 +51,7 @@ function Patient (props) {
         .catch(err=>{
             console.log(err)
         })
+    // eslint-disable-next-line
     },[])
 
     useEffect (() => {
@@ -84,6 +85,7 @@ function Patient (props) {
         .catch(err=>{
             console.log(err)
         })
+    // eslint-disable-next-line
     },[showModal])
 
     const handleInputChange = (e) => {
@@ -106,6 +108,7 @@ function Patient (props) {
         else {
             setAnimals(rawAnimals.filter(name => regex.exec(name.name)))
         }
+    // eslint-disable-next-line
     },[search])
 
     useEffect(() => {
@@ -118,6 +121,7 @@ function Patient (props) {
             setAnimals(rawAnimals.filter(species => species.Species.species === speciesSearch))
             setBreeds(rawBreeds.filter(species=> species.Species.species === speciesSearch))
         }
+    // eslint-disable-next-line
     },[speciesSearch])
 
     useEffect(() => {
@@ -128,6 +132,7 @@ function Patient (props) {
         else {
             setAnimals(rawAnimals.filter(breeds => breeds.Breed.breed === breedSearch))
         }
+    // eslint-disable-next-line
     },[breedSearch])
 
     const trimAnimals = () => {

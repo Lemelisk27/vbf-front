@@ -18,6 +18,7 @@ function EditClient (props) {
     const [zipError, setZipError] = useState(false)
     const [email, setEmail] = useState("")
     const [emailError, setEmailError] = useState(false)
+    // eslint-disable-next-line
     const emailVal = /^[A-z0-9_\.-]+@[\dA-z\.-]+\.[A-z\.]{2,6}$/
     const [phone, setPhone] = useState("")
     const [phoneError, setPhoneError] = useState(false)
@@ -37,6 +38,7 @@ function EditClient (props) {
         setZip(props.client.zip)
         setEmail(props.client.email)
         setPhone(props.client.phone)
+    // eslint-disable-next-line
     },[])
 
     const handleInputChange = (e) => {

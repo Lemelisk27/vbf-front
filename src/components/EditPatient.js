@@ -164,6 +164,7 @@ function EditPatient (props) {
         setMarks(props.animal.marks)
         setWarn(props.animal.warn)
         setDescription(props.animal.description)
+    // eslint-disable-next-line
     },[])
 
     return (

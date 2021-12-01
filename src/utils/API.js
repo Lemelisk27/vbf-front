@@ -111,6 +111,16 @@ const API = {
         return axios.delete(`${URL_PREFIX}/api/animals/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getInventoryItems:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/inventory/items`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    getClinic:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/clinics/all`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

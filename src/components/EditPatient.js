@@ -133,7 +133,6 @@ function EditPatient (props) {
     }
 
     useEffect(() => {
-        console.log(props)
         API.getClients(token)
         .then(res=>{
             setClients(res.data)
@@ -254,6 +253,7 @@ function EditPatient (props) {
             </div>
             <div className="d-flex col-12 mt-3">
                 <button className="bg-primary text-light rounded mx-auto col-3" onClick={handleFormSubmit}>Submit</button>
+                <button className="bg-primary text-light rounded mx-auto col-3" onClick={() => props.setEditInfo(false)}>Add/Edit Allergies</button>
             </div>
         </form>
     )

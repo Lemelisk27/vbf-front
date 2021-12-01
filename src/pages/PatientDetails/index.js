@@ -6,6 +6,7 @@ import Auth from "../../utils/auth"
 import API from "../../utils/API"
 import List from "../../components/List"
 import EditPatient from "../../components/EditPatient";
+import EditAllergies from "../../components/EditAllergies";
 
 function PatientDetails (props) {
     const {id} = useParams()
@@ -16,6 +17,7 @@ function PatientDetails (props) {
     const [allergyList, setAllergyList] = useState([])
     const [species, setSpecies] = useState("")
     const [breed, setBreed] = useState("")
+    const [editInfo, setEditInfo] = useState(true)
 
     useEffect (() => {
         API.getAnimalDetails(id,token)
@@ -83,7 +85,7 @@ function PatientDetails (props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <EditPatient animal={details} setShowModal={setShowModal}/>
+                    {editInfo?<EditPatient animal={details} setShowModal={setShowModal} setEditInfo={setEditInfo}/> : <EditAllergies setEditInfo={setEditInfo} animal={details} setShowModal={setShowModal}/>}
                 </Modal.Body>
             </Modal>
         </div>

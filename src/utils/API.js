@@ -81,6 +81,26 @@ const API = {
         return axios.put(`${URL_PREFIX}/api/clients`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getAllergies:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/allergies/all`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    deleteAllergyJoin:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/allergies/joins/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    getJoins:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/allergies/joins/all`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    createJoins:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/allergies/joins`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

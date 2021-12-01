@@ -1,5 +1,13 @@
 .zs-sales {
     background: #493657ff;
-    color: white;
     min-height: calc(100vh - 120px);
+}
+
+.zs-sales-card {
+    background: #eeeeeeff;
+    height: 80vh
+}
+
+.zs-product-list {
+    min-height: 37vh;
 }

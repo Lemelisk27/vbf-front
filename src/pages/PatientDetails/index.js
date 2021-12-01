@@ -82,7 +82,7 @@ function PatientDetails (props) {
                 show={showModal}
                 onHide={() => setShowModal(false)}
                 aria-labelledby='add-modal'>
-                <Modal.Header closeButton className="zs-modal-head">
+                <Modal.Header closeButton className="zs-modal-patient-head">
                     <Modal.Title id="add-modal">
                         <h3>Edit {details.name}</h3>
                     </Modal.Title>

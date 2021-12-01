@@ -21,6 +21,8 @@ function AddClient (props) {
     const phoneVal = /^\(?([0-9]{3})\)?[-.]?([0-9]{3})[-.]?([0-9]{4})$/
     const [phone, setPhone] = useState("")
     const [phoneError, setPhoneError] = useState(false)
+    const zipVal = /^[0-9]{5}[-]?([0-9]{4})?$/
+    const [validZip, setValidZip] = useState(false)
     const token = Auth.getToken()
 
     const handleInputChange = (e) => {
@@ -74,6 +76,10 @@ function AddClient (props) {
         }
         if (zip === "" || zip === null) {
             setZipError(true)
+            return
+        }
+        if (!zipVal.test(zip)) {
+            setValidZip(true)
             return
         }
         if (email.length > 0) {
@@ -166,6 +172,9 @@ function AddClient (props) {
                     <>
                     <p className="text-danger mb-0">A Zip Code is Required</p>
                     </>
+                )}
+                {validZip && (
+                    <p className="text-danger mb-0">The Zip Code is Invalid</p>
                 )}
             </div>
             <div className="d-flex flex-column px-1 py-2 col-6">

@@ -76,6 +76,11 @@ const API = {
         return axios.put(`${URL_PREFIX}/api/animals`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    editClient:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/clients`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

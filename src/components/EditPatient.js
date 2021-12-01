@@ -254,6 +254,7 @@ function EditPatient (props) {
             <div className="d-flex col-12 mt-3">
                 <button className="bg-primary text-light rounded mx-auto col-3" onClick={handleFormSubmit}>Submit</button>
                 <button className="bg-primary text-light rounded mx-auto col-3" onClick={() => props.setEditInfo(false)}>Add/Edit Allergies</button>
+                <button className="bg-danger text-light rounded mx-auto col-3" onClick={() => props.setDeleteAnimalPage(true)}>Delete {props.animal.name}</button>
             </div>
         </form>
     )

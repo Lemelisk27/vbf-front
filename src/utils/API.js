@@ -106,6 +106,11 @@ const API = {
         return axios.delete(`${URL_PREFIX}/api/clients/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    deleteAnimal:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/animals/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

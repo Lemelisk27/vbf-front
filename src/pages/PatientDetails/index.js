@@ -7,6 +7,7 @@ import API from "../../utils/API"
 import List from "../../components/List"
 import EditPatient from "../../components/EditPatient";
 import EditAllergies from "../../components/EditAllergies";
+import DeleteAnimal from "../../components/DeleteAnimal";
 
 function PatientDetails (props) {
     const {id} = useParams()
@@ -18,6 +19,7 @@ function PatientDetails (props) {
     const [species, setSpecies] = useState("")
     const [breed, setBreed] = useState("")
     const [editInfo, setEditInfo] = useState(true)
+    const [deleteAnimalPage, setDeleteAnimalPage] = useState(false)
 
     useEffect (() => {
         API.getAnimalDetails(id,token)
@@ -85,7 +87,7 @@ function PatientDetails (props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {editInfo?<EditPatient animal={details} setShowModal={setShowModal} setEditInfo={setEditInfo}/> : <EditAllergies setEditInfo={setEditInfo} animal={details} setShowModal={setShowModal}/>}
+                    {deleteAnimalPage ? <DeleteAnimal setDeleteAnimalPage={setDeleteAnimalPage} setShowModal={setShowModal} name={details.name} id={details.id}/> : (editInfo?<EditPatient animal={details} setShowModal={setShowModal} setEditInfo={setEditInfo} setDeleteAnimalPage={setDeleteAnimalPage}/> : <EditAllergies setEditInfo={setEditInfo} animal={details} setShowModal={setShowModal}/>)}
                 </Modal.Body>
             </Modal>
         </div>

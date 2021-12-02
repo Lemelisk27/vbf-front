@@ -1,3 +1,17 @@
 .zs-inventory {
+    background: #6b818c;
     min-height: calc(100vh - 120px);
+}
+
+.zs-inventory-card {
+    background: #eeeeeeff;
+    height: 80vh
+}
+
+.zs-inventory-select {
+    height: 30px
+}
+
+.zs-icard {
+    height: 50vh
 }

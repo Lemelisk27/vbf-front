@@ -23,6 +23,8 @@ function Sales (props) {
     const [total, setTotal] = useState(0)
     const [paid, setPaid] = useState(0)
     const [due, setDue] = useState(0)
+    const [disableList, setDisableList] = useState(true)
+    const [placeholder, setPlaceholder] = useState("Please Select a Client First...")
 
     useEffect (()=>{
         API.getClients(token)
@@ -69,6 +71,8 @@ function Sales (props) {
     const addClient = (e) => {
         e.preventDefault()
         setClientSelected(true)
+        setDisableList(false)
+        setPlaceholder("Type Here to Search...")
     }
 
     const addProduct = (e) => {
@@ -95,6 +99,7 @@ function Sales (props) {
             const tempDue = tempTotal - paid
             setDue(tempDue.toFixed(2))
         }
+    // eslint-disable-next-line
     },[change, paid])
 
     const paidChange = (e) => {
@@ -127,10 +132,11 @@ function Sales (props) {
                     <h3>Products</h3>
                     <div className="d-flex flex-row col-12">
                         <Typeahead
+                            disabled={disableList}
                             id="product-list"
                             onChange={setSelectedProduct}
                             options={productList}
-                            placeholder="Type Here to Search..."
+                            placeholder={placeholder}
                             selected={selectedProduct}
                             className="col-9"
                         />

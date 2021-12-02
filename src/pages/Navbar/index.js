@@ -37,7 +37,8 @@ const buttons = [
         name: "Inventory",
         link: "/inventory",
         style: {
-            color: "black"
+            background: "#6b818c",
+            color: "white"
         },
         img: "/assets/images/inventory.png"
     },

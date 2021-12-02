@@ -121,6 +121,11 @@ const API = {
         return axios.get(`${URL_PREFIX}/api/clinics/all`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getInventoryCategories:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/inventory/categories`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

@@ -13,6 +13,7 @@ function ProductList (props) {
         const tempPrice = cost * qty
         setPrice(tempPrice.toFixed(2))
         props.setChange(!props.change)
+    // eslint-disable-next-line
     },[qty])
 
     return (

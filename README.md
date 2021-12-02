@@ -1,7 +1,9 @@
 # Vet's Best Friend (VBF) - Front End
 ![license badge](https://img.shields.io/badge/license-MIT-blue)
 ## Description
-This it the front end for a vet management app. The site allows users to track their clients, patients, appointments, and inventory. The URL from the front end of the site can be found below.
+This it the front end for a vet management app. The site allows users to track their clients, patients, appointments, and inventory.  
+  
+The URL for the back end of the site can be found below.
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
@@ -45,4 +47,4 @@ Zach Smith - [GitHub Profile](https://github.com/Lemelisk27@gmail.com)
 This Product is licensed under the MIT license.  
 For more information please visit: https://spdx.org/licenses/MIT.html
 ## Questions  
-If you have any questions you can contact me directly at Lemelisk27@gmail.com. You can also find more of my work on GitHub at [Lemelisk27](https://github.com/Lemelisk27)
+If you have any questions you can contact me directly at Lemelisk27@gmail.com. You can also find more of my work on GitHub at [Lemelisk27](https://github.com/Lemelisk27) or you can view my portfolio [here](https://lemelisk27.herokuapp.com/).

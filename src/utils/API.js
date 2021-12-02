@@ -126,6 +126,11 @@ const API = {
         return axios.get(`${URL_PREFIX}/api/inventory/categories`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    updateInventoryItems:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/inventory/items`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

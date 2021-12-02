@@ -9,8 +9,8 @@ function InventoryList (props) {
         <tr>
             <td>{props.item.item_name}</td>
             <td>{props.item.Inventories[0].category_name}</td>
-            <td>{cost}</td>
-            <td>{qty} {props.item.Unit.unit_name}</td>
+            <td>{props.item.cost}</td>
+            <td>{props.item.qty} {props.item.Unit.unit_name}</td>
             <td>{total.toFixed(2)}</td>
         </tr>
     )

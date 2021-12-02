@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
+import {Modal} from "react-bootstrap";
 import "./style.css"
 import Auth from "../../utils/auth"
 import API from "../../utils/API"
 import InventoryList from "../../components/InventoryList";
 import ListItems from "../../components/ListItems"
+import AddInventory from "../../components/AddInventory";
 
 function Inventory (props) {
     const token = Auth.getToken()
@@ -12,15 +14,21 @@ function Inventory (props) {
     const [search, setSearch] = useState("")
     const [categories, setCategories] = useState([])
     const [catSearch, setCatSearch] = useState("")
+    const [showModal, setShowModal] = useState(false)
 
     useEffect(()=>{
         API.getInventoryItems(token)
         .then(res=>{
-            setInventoryList(res.data)
             setRawList(res.data)
+            const tempArray = res.data
+            for (let i = 0; i < tempArray.length; i++) {
+                if (tempArray[i].Inventories[0] === undefined) {
+                    tempArray[i].Inventories[0] = {category_name: "None"}
+                }
+            }
+            setInventoryList(tempArray)
             API.getInventoryCategories(token)
             .then(res=>{
-                console.log(res.data)
                 setCategories(res.data)
             })
             .catch(err=>{
@@ -31,6 +39,30 @@ function Inventory (props) {
             console.log(err)
         })
     },[])
+
+    useEffect(()=>{
+        API.getInventoryItems(token)
+        .then(res=>{
+            setRawList(res.data)
+            const tempArray = res.data
+            for (let i = 0; i < tempArray.length; i++) {
+                if (tempArray[i].Inventories[0] === undefined) {
+                    tempArray[i].Inventories[0] = {category_name: "None"}
+                }
+            }
+            setInventoryList(tempArray)
+            API.getInventoryCategories(token)
+            .then(res=>{
+                setCategories(res.data)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    },[showModal])
 
     const handleInputChange = (e) => {
         if (e.target.name === "search") {
@@ -57,25 +89,16 @@ function Inventory (props) {
             setCatSearch("All")
         }
         else {
-            setInventoryList(TrimList().filter(cat => cat.Inventories[0].category_name === catSearch))
+            setInventoryList(inventoryList.filter(cat => cat.Inventories[0].category_name === catSearch))
         }
     },[catSearch])
-
-    const TrimList = () => {
-        for (let i = 0; i < inventoryList.length; i++) {
-            if (inventoryList[i].Inventories[0] === undefined) {
-                inventoryList[i].Inventories[0] = {category_name: "None"}
-            }
-        }
-        return inventoryList
-    }
 
     return (
         <div className="zs-inventory d-flex flex-row pt-3">
             <div className="zs-inventory-card d-flex flex-column col-11 m-auto rounded">
                 <div className="d-flex flex-row col-11 mx-auto mt-4 justify-content-between border-bottom border-dark pb-4">
                     <h1>Inventory</h1>
-                    <button className="rounded bg-primary text-light col-2">Add Inventory</button>
+                    <button className="rounded bg-primary text-light col-2" onClick={() => setShowModal(true)}>Add Inventory</button>
                 </div>
                 <div className="d-flex flex-row col-11 justify-content-between mx-auto mt-5">
                     <form className="d-flex flex-row col-8 justify-content-between">
@@ -104,11 +127,25 @@ function Inventory (props) {
                             </tr>
                         </thead>
                         <tbody>
-                            {TrimList().map(item=><InventoryList key={item.id} item={item}/>)}
+                            {inventoryList.map(item=><InventoryList key={item.id} item={item}/>)}
                         </tbody>
                     </table>
                 </div>
             </div>
+            <Modal
+                size='lg'
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                aria-labelledby='add-modal'>
+                <Modal.Header closeButton className="zs-modal-inventory">
+                    <Modal.Title id="add-modal">
+                        <h3>Add Inventory</h3>
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <AddInventory setShowModal={setShowModal}/>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }

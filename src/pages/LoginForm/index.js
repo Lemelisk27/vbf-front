@@ -37,7 +37,8 @@ function LoginForm(props) {
                 id: res.data.user.id,
                 username: res.data.user.username,
                 firstName: res.data.user.first_name,
-                lastName: res.data.user.last_name
+                lastName: res.data.user.last_name,
+                admin: res.data.user.admin
             }
             Auth.saveUser(userData)
             setLoginState({

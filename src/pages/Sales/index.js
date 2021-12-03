@@ -277,7 +277,8 @@ function Sales (props) {
                 size='lg'
                 show={showModal}
                 onHide={() => window.location.reload()}
-                aria-labelledby='add-modal'>
+                aria-labelledby='add-modal'
+                centered>
                 <Modal.Header closeButton className="zs-modal-sales">
                     <Modal.Title id="add-modal">
                         <h3>Invoice Saved</h3>

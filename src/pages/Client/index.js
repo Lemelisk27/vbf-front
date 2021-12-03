@@ -88,7 +88,8 @@ function Client (props) {
                 size='lg'
                 show={showModal}
                 onHide={() => setShowModal(false)}
-                aria-labelledby='add-modal'>
+                aria-labelledby='add-modal'
+                centered>
                 <Modal.Header closeButton className="zs-modal-client">
                     <Modal.Title id="add-modal">
                         <h3>Add Client</h3>

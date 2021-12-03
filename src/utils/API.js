@@ -128,7 +128,17 @@ const API = {
         }})
     },
     updateInventoryItems:(data,tkn)=>{
-        return axios.put(`${URL_PREFIX}/api/inventory/items`, data, {headers:{
+        return axios.put(`${URL_PREFIX}/api/inventory/items/qty`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    createInvoice:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/invoice`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    createInvoiceItems:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/invoice/items`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
     }

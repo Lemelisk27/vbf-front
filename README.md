@@ -40,7 +40,7 @@ Website - [Vet's Best Friend](https://vetbestfriend.herokuapp.com/)
   
 Back End Site [Vet's Best Friend API](https://vetbestfriend-back.herokuapp.com/)  
 Back End GitHub [Vet's Best Friend API - GitHub](https://github.com/Lemelisk27/vbf-back)  
-Front End GitHub [Vet's Best Friend API - GitHub](https://github.com/Lemelisk27/vbf-front)  
+Front End GitHub [Vet's Best Friend - GitHub](https://github.com/Lemelisk27/vbf-front)  
   
 ![Landing Page](public/assets/images/landing.png)  
 ![Patient Page](public/assets/images/patients_screenshot.png)  

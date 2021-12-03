@@ -38,6 +38,7 @@ function Inventory (props) {
         .catch(err=>{
             console.log(err)
         })
+    // eslint-disable-next-line
     },[])
 
     useEffect(()=>{
@@ -62,6 +63,7 @@ function Inventory (props) {
         .catch(err=>{
             console.log(err)
         })
+    // eslint-disable-next-line
     },[showModal])
 
     const handleInputChange = (e) => {
@@ -81,6 +83,7 @@ function Inventory (props) {
         else {
             setInventoryList(rawList.filter(item => regex.exec(item.item_name)))
         }
+    // eslint-disable-next-line
     },[search])
 
     useEffect(()=>{
@@ -91,6 +94,7 @@ function Inventory (props) {
         else {
             setInventoryList(inventoryList.filter(cat => cat.Inventories[0].category_name === catSearch))
         }
+    // eslint-disable-next-line
     },[catSearch])
 
     return (

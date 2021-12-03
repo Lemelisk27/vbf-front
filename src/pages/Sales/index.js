@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {Modal} from "react-bootstrap"
 import "./style.css"
 import 'react-bootstrap-typeahead/css/Typeahead.css'
 import { Typeahead } from 'react-bootstrap-typeahead'
@@ -25,6 +26,8 @@ function Sales (props) {
     const [due, setDue] = useState(0)
     const [disableList, setDisableList] = useState(true)
     const [placeholder, setPlaceholder] = useState("Please Select a Client First...")
+    const [disableSave, setDisableSave] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     useEffect (()=>{
         API.getClients(token)
@@ -45,7 +48,8 @@ function Sales (props) {
                     const tempObj = {
                         label: res.data[i].item_name,
                         id: res.data[i].id,
-                        cost: res.data[i].cost
+                        cost: res.data[i].cost,
+                        qty: res.data[i].qty
                     }
                     tempArray.push(tempObj)
                 }
@@ -110,6 +114,76 @@ function Sales (props) {
         setPaid(e.target.value)
     }
 
+    const handleFormSubmit = (e) => {
+        e.preventDefault()
+        if (selectedClient.length > 0 && productPage) {
+            let tempVar = false
+            let newDue = parseFloat(due)
+            if (due <= 0) {
+                tempVar = true
+                newDue = 0
+            }
+            const sendObj = {
+                ClientId: selectedClient[0].id,
+                subtotal: parseFloat(subtotal),
+                tax: parseFloat(tax),                                    
+                total: parseFloat(total),
+                paid: parseFloat(paid),
+                due: newDue,
+                // eslint-disable-next-line
+                date: new Date,
+                full_paid: tempVar
+            }
+            API.createInvoice(sendObj,token)
+            .then(res=>{
+                const id = res.data.id
+                const items = []
+                const inv = []
+                const table = document.getElementById("table")
+                for (let i = 0; i < table.rows.length; i++) {
+                    const tempObj = {
+                        InvoiceId: id,
+                        item_id: parseInt(table.rows[i].cells[0].dataset.index),
+                        item_name: table.rows[i].cells[0].innerHTML,
+                        item_cost: parseFloat(table.rows[i].cells[1].innerHTML),
+                        item_qty: parseInt(table.rows[i].cells[2].dataset.index),
+                        item_price: parseFloat(table.rows[i].cells[3].innerHTML)
+                    }
+                    const invObj = {
+                        id: parseInt(table.rows[i].cells[0].dataset.index),
+                        qty: parseInt(table.rows[i].cells[1].dataset.index)
+                    }
+                    inv.push(invObj)
+                    items.push(tempObj)
+                }
+                for (let i = 0; i < items.length; i++) {
+                    API.createInvoiceItems(items[i],token)
+                    .then(res=>{
+                        console.log(res)
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    })
+                }
+                for (let i = 0; i < inv.length; i++) {
+                    API.updateInventoryItems(inv[i],token)
+                    .then(res=>{
+                        console.log(res)
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    })
+                }
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+            setDisableList(true)
+            setDisableSave(true)
+            setShowModal(true)
+        }
+    }
+
     return (
         <div className="zs-sales pt-3">
             <div className="zs-sales-card d-flex flex-column col-11 m-auto rounded">
@@ -144,7 +218,7 @@ function Sales (props) {
                             selected={selectedProduct}
                             className="col-9"
                         />
-                        <button className="col-2 rounded bg-primary text-light mx-3" onClick={addProduct}>Add</button>
+                        <button className="col-2 rounded bg-primary text-light mx-3" onClick={addProduct} disabled={disableList}>Add</button>
                     </div>
                 </div>
                 <div className="mx-auto border border-dark mt-3 zs-product-list overflow-auto">
@@ -194,11 +268,28 @@ function Sales (props) {
                         </table>
                     </div>
                     <div className="d-flex flex-column col-3 align-self-end">
-                        <button className="bg-primary text-light rounded mb-2">Save</button>
+                        <button className="bg-primary text-light rounded mb-2" onClick={handleFormSubmit} disabled={disableSave}>Save</button>
                         <button className="bg-primary text-light rounded" onClick={() => window.location.reload()}>Cancel</button>
                     </div>
                 </div>
             </div>
+            <Modal
+                size='lg'
+                show={showModal}
+                onHide={() => window.location.reload()}
+                aria-labelledby='add-modal'>
+                <Modal.Header closeButton className="zs-modal-sales">
+                    <Modal.Title id="add-modal">
+                        <h3>Invoice Saved</h3>
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="d-flex flex-column col-11 mx-auto justify-content-center">
+                        <h2 className="text-center">The invoice was saved.</h2>
+                        <button className="bg-primary text-light col-3 mx-auto rounded mt-3" onClick={() => window.location.reload()}>Close</button>
+                    </div>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }

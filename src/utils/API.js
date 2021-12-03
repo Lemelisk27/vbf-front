@@ -141,6 +141,16 @@ const API = {
         return axios.post(`${URL_PREFIX}/api/invoice/items`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getUser:(id,tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/users/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateUser:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/users`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

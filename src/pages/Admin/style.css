@@ -12,3 +12,31 @@
     background: white;
     min-height: 60vh;
 }
+
+.admin-btns {
+    border-radius: 30px 30px 0 0;
+}
+
+.Profile-Profile {
+    background: #05a8aa;
+}
+
+.Clinic-Clinic {
+    background: #05a8aa;
+}
+
+.Users-Users {
+    background: #05a8aa;
+}
+
+.Inventory-Inventory {
+    background: #05a8aa;
+}
+
+.Animals-Animals {
+    background: #05a8aa;
+}
+
+.zs-admin-modal {
+    background: #bbbe64ff;
+}

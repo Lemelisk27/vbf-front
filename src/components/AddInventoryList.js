@@ -11,6 +11,7 @@ function AddInventoryList (props) {
         <tr>
             <td data-index={props.item.id}>{props.item.label}</td>
             <td data-index={qty}><input type="number" name="qty" className="col-12 text-center" value={qty} onChange={qtyChange}></input></td>
+            <td>{props.item.unit}</td>
         </tr>
     )
 }

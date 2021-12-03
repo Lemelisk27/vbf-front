@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./style.css"
 import Auth from "../../utils/auth"
 import AdminButtons from "../../components/AdminButtons"
@@ -11,6 +11,7 @@ import AdminAnimals from "../../components/AdminAnimals"
 function Admin (props) {
     const user = Auth.getUser()
     const [page, setPage] = useState("Profile")
+    const [newClass, setNewClass] = useState("Profile")
 
     const userButtons = [
         {
@@ -57,6 +58,7 @@ function Admin (props) {
     const handlePageChange = (e) => {
         e.preventDefault()
         setPage(e.target.name)
+        setNewClass(e.target.name)
     }
 
     return (
@@ -68,11 +70,11 @@ function Admin (props) {
                 <div className="d-flex flex-column col-11 mx-auto">
                     <div className="d-flex flex-row mt-3 col-12">
                         {userButtons.map((item,i) => {
-                            return <AdminButtons key={i} name={item.name} handlePageChange={handlePageChange}/>
+                            return <AdminButtons key={i} name={item.name} handlePageChange={handlePageChange} newClass={newClass}/>
                         })}
                         {user.admin && (
                             adminButtons.map((item,i)=> {
-                                return <AdminButtons key={i} name={item.name} handlePageChange={handlePageChange}/>
+                                return <AdminButtons key={i} name={item.name} handlePageChange={handlePageChange} newClass={newClass}/>
                             })
                         )}
                     </div>

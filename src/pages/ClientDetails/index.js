@@ -17,7 +17,6 @@ function ClientDetails (props) {
     useEffect (() => {
         API.getClientDetails(id,token)
         .then(res=>{
-            console.log(res.data)
             setClient(res.data)
         })
         .catch(err=>{

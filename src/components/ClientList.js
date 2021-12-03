@@ -2,7 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom"
 
 function ClientList (props) {
-    console.log(props)
     return (
         <tr>
             <th scope="row"><Link to={`/clients/${props.client.id}`}>{props.client.full_name}</Link></th>

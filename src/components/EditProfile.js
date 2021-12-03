@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import Auth from "../utils/auth";
-import API from "../utils/API"
+import Auth from "../utils/auth"
+import API from "../utils/API";
 
-function EditClient (props) {
+function EditProfile (props) {
     const token = Auth.getToken()
     const [firstName, setFirstName] = useState("")
     const [firstNameError, setFirstNameError] = useState(false)
@@ -14,8 +14,12 @@ function EditClient (props) {
     const [cityError, setCityError] = useState(false)
     const [state, setState] = useState("")
     const [stateError, setStateError] = useState(false)
-    const [zip, setZip] = useState(0)
+    const stateVal = /^([A-z]{2})$/
+    const [validState, setValidState] = useState(false)
+    const [zip, setZip] = useState("")
     const [zipError, setZipError] = useState(false)
+    const zipVal = /^[0-9]{5}[-]?([0-9]{4})?$/
+    const [validZip, setValidZip] = useState(false)
     const [email, setEmail] = useState("")
     const [emailError, setEmailError] = useState(false)
     // eslint-disable-next-line
@@ -23,21 +27,17 @@ function EditClient (props) {
     const [phone, setPhone] = useState("")
     const [phoneError, setPhoneError] = useState(false)
     const phoneVal = /^\(?([0-9]{3})\)?[-.]?([0-9]{3})[-.]?([0-9]{4})$/
-    const zipVal = /^[0-9]{5}[-]?([0-9]{4})?$/
-    const [validZip, setValidZip] = useState(false)
-    const stateVal = /^([A-z]{2})$/
-    const [validState, setValidState] = useState(false)
 
-    useEffect (() => {
-        setFirstName(props.client.first_name)
-        setLastName(props.client.last_name)
-        setStreet(props.client.street)
-        setCity(props.client.city)
-        setState(props.client.state)
-        setZip(props.client.zip)
-        setEmail(props.client.email)
-        setPhone(props.client.phone)
-    // eslint-disable-next-line
+    useEffect(()=>{
+        setFirstName(props.user.first_name)
+        setLastName(props.user.last_name)
+        setStreet(props.user.street)
+        setCity(props.user.city)
+        setState(props.user.state)
+        setZip(props.user.zip)
+        setEmail(props.user.email)
+        setPhone(props.user.phone)
+        // eslint-disable-next-line
     },[])
 
     const handleInputChange = (e) => {
@@ -113,8 +113,8 @@ function EditClient (props) {
                 return
             }
         }
-        const clientData = {
-            id: props.client.id,
+        const userData = {
+            id: props.user.id,
             first_name: firstName,
             last_name: lastName,
             street: street,
@@ -124,14 +124,10 @@ function EditClient (props) {
             email: email,
             phone: phone
         }
-        API.editClient(clientData,token)
+        API.updateUser(userData,token)
         .then(res=>{
-            if (res.status === 200) {
-                props.setShowModal(false)
-            }
-            else {
-                console.log(res)
-            }
+            console.log(res)
+            props.setShowModal(false)
         })
         .catch(err=>{
             console.log(err)
@@ -168,7 +164,7 @@ function EditClient (props) {
                     <label>City</label>
                     <input type="text" name="city" value={city} onChange={handleInputChange}></input>
                     {cityError && (
-                        <p className="text-danger mb-0">A City is Required</p>
+                        <p className="text-danger mb-0">A city is Required</p>
                     )}
                 </div>
                 <div className="d-flex flex-column col-1 px-1 py-2">
@@ -208,12 +204,9 @@ function EditClient (props) {
                     )}
                 </div>
             </div>
-            <div className="d-flex col-12 mt-3">
-                <button className="bg-primary text-light rounded mx-auto col-3" onClick={handleFormSubmit}>Submit</button>
-                <button className="bg-danger text-light rounded mx-auto col-3" onClick={() => props.setDeleteClientPage(true)}>Delete {props.client.first_name} {props.client.last_name}</button>
-            </div>
+            <button className="bg-primary text-light rounded mx-auto col-3 mt-3" onClick={handleFormSubmit}>Submit</button>
         </form>
     )
 }
 
-export default EditClient
+export default EditProfile

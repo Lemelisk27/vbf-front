@@ -22,7 +22,8 @@ function AddInventory (props) {
                 const tempObj = {
                     label: res.data[i].item_name,
                     id: res.data[i].id,
-                    qty: res.data[i].qty
+                    qty: res.data[i].qty,
+                    unit: res.data[i].Unit.unit_name
                 }
                 tempArray.push(tempObj)
             }
@@ -96,8 +97,9 @@ function AddInventory (props) {
             <table className="table table-bordered mt-2">
                 <thead className="bg-secondary">
                     <tr className="text-center text-light">
-                        <th scope="col" className="col-11">Item</th>
+                        <th scope="col" className="col-10">Item</th>
                         <th scope="col" className="col-1">Quantity</th>
+                        <th scope="col" className="col-1">Units</th>
                     </tr>
                 </thead>
                 <tbody id="list-table">

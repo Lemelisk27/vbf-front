@@ -70,18 +70,22 @@ function Sales (props) {
 
     const addClient = (e) => {
         e.preventDefault()
-        setClientSelected(true)
-        setDisableList(false)
-        setPlaceholder("Type Here to Search...")
+        if (selectedClient.length > 0) {
+            setClientSelected(true)
+            setDisableList(false)
+            setPlaceholder("Type Here to Search...")
+        }
     }
 
     const addProduct = (e) => {
         e.preventDefault()
-        exclude.push(selectedProduct[0].label)
-        selectedList.push(selectedProduct[0])
-        setProductList(productList.filter(item => !exclude.includes(item.label)))
-        setSelectedProduct([])
-        setProductPage(true)
+        if (selectedProduct.length > 0) {
+            exclude.push(selectedProduct[0].label)
+            selectedList.push(selectedProduct[0])
+            setProductList(productList.filter(item => !exclude.includes(item.label)))
+            setSelectedProduct([])
+            setProductPage(true)
+        }
     }
 
     useEffect (()=>{
@@ -107,7 +111,7 @@ function Sales (props) {
     }
 
     return (
-        <div className="zs-sales d-flex flex-row pt-3">
+        <div className="zs-sales pt-3">
             <div className="zs-sales-card d-flex flex-column col-11 m-auto rounded">
                 <div className="d-flex flex-row col-11 mx-auto mt-4 justify-content-between border-bottom border-dark pb-4">
                     <h1>Sales</h1>
@@ -143,9 +147,9 @@ function Sales (props) {
                         <button className="col-2 rounded bg-primary text-light mx-3" onClick={addProduct}>Add</button>
                     </div>
                 </div>
-                <div className="zs-product-list d-flex flex-column col-11 mx-auto border border-dark mt-3 overflow-auto">
+                <div className="mx-auto border border-dark mt-3 zs-product-list overflow-auto">
                     {!productPage ? (
-                        <p className="text-center my-auto">No Products Selected</p>
+                        <p className="text-center m-auto">No Products Selected</p>
                     ):(
                         <table className="table table-bordered">
                             <thead className="bg-secondary">

@@ -10,6 +10,7 @@
 
 .zs-product-list {
     min-height: 35vh;
+    width: 91.66666667%;
 }
 
 input::-webkit-outer-spin-button,

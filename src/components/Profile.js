@@ -3,11 +3,13 @@ import Auth from "../utils/auth"
 import API from "../utils/API";
 import {Modal} from "react-bootstrap";
 import EditProfile from "./EditProfile"
+import ChangePassword from "./ChangePassword";
 
 function Profile (props) {
     const user = Auth.getUser()
     const token = Auth.getToken()
     const [showModal, setShowModal] = useState(false)
+    const [changePassword, setChangePassword] = useState(false)
     const [userInfo, setUserInfo] = useState({
         first_name: "",
         email: "",
@@ -41,6 +43,16 @@ function Profile (props) {
         })
     }
 
+    const passwordBtn = () => {
+        setChangePassword(true)
+        setShowModal(true)
+    }
+
+    const editBtn = () => {
+        setChangePassword(false)
+        setShowModal(true)
+    }
+
     return (
         <div className="col-11 mx-auto mt-3">
             <div>
@@ -55,8 +67,8 @@ function Profile (props) {
                 <p>{userInfo.city}, {userInfo.state} {userInfo.zip}</p>
             </div>
             <div className="d-flex flex-row justify-content-around mt-5">
-                <button className="col-3 bg-primary text-light rounded" onClick={() => setShowModal(true)}>Edit Profile</button>
-                <button className="col-3 bg-primary text-light rounded">Change Password</button>
+                <button className="col-3 bg-primary text-light rounded" onClick={editBtn}>Edit Profile</button>
+                <button className="col-3 bg-primary text-light rounded" onClick={passwordBtn}>Change Password</button>
             </div>
             <Modal
                 size='lg'
@@ -70,7 +82,7 @@ function Profile (props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <EditProfile user={userInfo} setShowModal={setShowModal}/>
+                    {changePassword ? <ChangePassword user={userInfo} setShowModal={setShowModal}/> : <EditProfile user={userInfo} setShowModal={setShowModal}/>}
                 </Modal.Body>
             </Modal>
         </div>

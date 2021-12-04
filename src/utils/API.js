@@ -151,6 +151,11 @@ const API = {
         return axios.put(`${URL_PREFIX}/api/users`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    changePassword:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/users/change`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

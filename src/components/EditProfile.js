@@ -204,7 +204,10 @@ function EditProfile (props) {
                     )}
                 </div>
             </div>
-            <button className="bg-primary text-light rounded mx-auto col-3 mt-3" onClick={handleFormSubmit}>Submit</button>
+            <div className="d-flex flex-row justify-content-around">
+                <button className="bg-primary text-light rounded mx-auto col-3 mt-3" onClick={handleFormSubmit}>Submit</button>
+                <button className="bg-primary text-light rounded mx-auto col-3 mt-3" onClick={() => props.setShowModal(false)}>Cancel</button>
+            </div>
         </form>
     )
 }

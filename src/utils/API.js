@@ -156,6 +156,11 @@ const API = {
         return axios.post(`${URL_PREFIX}/api/users/change`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    updateClinic:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/clinics`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

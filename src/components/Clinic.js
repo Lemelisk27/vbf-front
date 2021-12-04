@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from "react";
 import Auth from "../utils/auth"
 import API from "../utils/API";
+import {Modal} from "react-bootstrap";
+import EditClinic from "./EditClinic";
 
 function Clinic (props) {
     const token = Auth.getToken()
     const user = Auth.getUser()
+    const [showClinicModal, setShowClinicModal] = useState(false)
     const [clinic, setClinic] = useState({
         id: 0,
         name: "",
@@ -24,10 +27,14 @@ function Clinic (props) {
         // eslint-disable-next-line
     },[])
 
+    useEffect(()=>{
+        loadPage()
+        // eslint-disable-next-line
+    },[showClinicModal])
+
     const loadPage = () => {
         API.getClinic(token)
         .then(res=>{
-            console.log(res.data)
             setClinic({
                 ...clinic,
                 id: res.data[0].id,
@@ -42,7 +49,6 @@ function Clinic (props) {
                 tax_rate: parseFloat(res.data[0].tax_rate),
                 zip: parseInt(res.data[0].zip)
             })
-            console.log(clinic)
         })
         .catch(err=>{
             console.log(err)
@@ -63,11 +69,28 @@ function Clinic (props) {
                     <p className="mb-0">{clinic.street}</p>
                     <p>{clinic.city}, {clinic.state} {clinic.zip}</p>
                 </div>
-                <p>Website: <a href={clinic.site}>{clinic.name}</a></p>
+                {clinic.site && (
+                    <p>Website: <a href={clinic.site}>{clinic.name}</a></p>
+                )}
                 {user.admin && (
-                    <button className="bg-primary text-light rounded col-12 mx-auto mt-5">Edit {clinic.name}</button>
+                    <button className="bg-primary text-light rounded col-12 mx-auto mt-5" onClick={() => setShowClinicModal(true)}>Edit {clinic.name}</button>
                 )}
             </div>
+            <Modal
+                size="lg"
+                show={showClinicModal}
+                onHide={() => setShowClinicModal(false)}
+                aria-labelledby='add-modal'
+                centered>
+                <Modal.Header closeButton className="zs-admin-modal">
+                    <Modal.Title id='add-modal'>
+                        <h3>Edit Clinic</h3>
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <EditClinic clinic={clinic} setShowClinicModal={setShowClinicModal}/>
+                </Modal.Body>
+            </Modal>
         </div>
     )
 }

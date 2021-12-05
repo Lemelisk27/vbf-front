@@ -161,6 +161,21 @@ const API = {
         return axios.put(`${URL_PREFIX}/api/clinics`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getAllUsers:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/users/all`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    getRoles:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/roles/all`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    createUser:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/users`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

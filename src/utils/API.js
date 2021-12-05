@@ -206,6 +206,21 @@ const API = {
         return axios.post(`${URL_PREFIX}/api/inventory/categories`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    updateInventoryCategory:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/inventory/categories`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateItemCategory:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/inventory/items/category`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    deleteCategory:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/inventory/categories/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

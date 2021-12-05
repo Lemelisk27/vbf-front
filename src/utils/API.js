@@ -181,6 +181,26 @@ const API = {
         return axios.delete(`${URL_PREFIX}/api/users/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    addRole:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/roles`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateRole:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/roles`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    deleteRole:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/roles/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateUserRoles:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/users/roles`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

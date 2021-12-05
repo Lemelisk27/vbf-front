@@ -217,7 +217,6 @@ function AddUser (props) {
             setRoleError(true)
             return
         }
-        console.log(newUser)
         API.createUser(newUser,token)
         .then(res=>{
             console.log(res)

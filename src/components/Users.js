@@ -3,6 +3,9 @@ import {Modal} from "react-bootstrap";
 import AddUser from "../components/AddUser"
 import EditUser from "../components/EditUser"
 import DeleteUser from "../components/DeleteUser"
+import AddRole from "../components/AddRole"
+import EditRole from "../components/EditRole"
+import DeleteRole from "../components/DeleteRole"
 
 function Users (props) {
     const [showUserModal, setShowUserModal] = useState(false)
@@ -10,6 +13,9 @@ function Users (props) {
     const [showRoleModal, setShowRoleModal] = useState(false)
     const [addUser, setAddUser] = useState(true)
     const [editUser, setEditUser] = useState(false)
+    const [addNewRole, setAddNewRole] = useState(true)
+    const [editOldRole, setEditOldRole] = useState(false)
+
 
     const addUsers = (e) => {
         e.preventDefault()
@@ -39,18 +45,24 @@ function Users (props) {
         e.preventDefault()
         setShowRoleModal(true)
         setModalTitle("Add")
+        setAddNewRole(true)
+        setEditOldRole(false)
     }
 
     const editRole = (e) => {
         e.preventDefault()
         setShowRoleModal(true)
         setModalTitle("Edit")
+        setAddNewRole(false)
+        setEditOldRole(true)
     }
 
     const deleteRole = (e) => {
         e.preventDefault()
         setShowRoleModal(true)
         setModalTitle("Delete")
+        setAddNewRole(false)
+        setEditOldRole(false)
     }
 
     return (
@@ -100,7 +112,9 @@ function Users (props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>This is the role body.</p>
+                    {addNewRole ? <AddRole setShowRoleModal={setShowRoleModal}/>:
+                    (editOldRole ? <EditRole setShowRoleModal={setShowRoleModal}/>:
+                    <DeleteRole setShowRoleModal={setShowRoleModal}/>)}
                 </Modal.Body>
             </Modal>
         </div>

@@ -101,16 +101,20 @@ function EditProfile (props) {
             setValidZip(true)
             return
         }
-        if (email.length > 0) {
-            if (!emailVal.test(email)) {
-                setEmailError(true)
-                return
+        if (email) {
+            if (email.length > 0) {
+                if (!emailVal.test(email)) {
+                    setEmailError(true)
+                    return
+                }
             }
         }
-        if (phone.length > 0) {
-            if (!phoneVal.test(phone)) {
-                setPhoneError(true)
-                return
+        if (phone) {
+            if (phone.length > 0) {
+                if (!phoneVal.test(phone)) {
+                    setPhoneError(true)
+                    return
+                }
             }
         }
         const userData = {

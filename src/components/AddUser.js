@@ -35,8 +35,6 @@ function AddUser (props) {
         city: "",
         state: "",
         zip: "",
-        email: "",
-        phone: "",
         RoleId: 0,
         ClinicId: 1,
         admin: false
@@ -191,16 +189,20 @@ function AddUser (props) {
             setValidZip(true)
             return
         }
-        if (newUser.email.length > 0) {
-            if (!emailVal.test(newUser.email)) {
-                setEmailError(true)
-                return
+        if (newUser.email) {
+            if (newUser.email.length > 0) {
+                if (!emailVal.test(newUser.email)) {
+                    setEmailError(true)
+                    return
+                }
             }
         }
-        if (newUser.phone.length > 0) {
-            if (!phoneVal.test(newUser.phone)) {
-                setPhoneError(true)
-                return
+        if (newUser.phone) {
+            if (newUser.phone.length > 0) {
+                if (!phoneVal.test(newUser.phone)) {
+                    setPhoneError(true)
+                    return
+                }
             }
         }
         if (newUser.username === "" || newUser.username === null) {
@@ -258,31 +260,31 @@ function AddUser (props) {
             </div>
             <div className="d-flex flex-row col-12">
                 <div className="d-flex flex-column col-7 px-1 py-2">
-                        <label>City</label>
-                        <input type="text" name="city" value={newUser.city} onChange={handleInputChange}></input>
-                        {cityError && (
-                            <p className="text-danger mb-0">A City is Required</p>
-                        )}
+                    <label>City</label>
+                    <input type="text" name="city" value={newUser.city} onChange={handleInputChange}></input>
+                    {cityError && (
+                        <p className="text-danger mb-0">A City is Required</p>
+                    )}
                 </div>
                 <div className="d-flex flex-column col-1 px-1 py-2">
-                        <label>State</label>
-                        <input type="text" name="state" value={newUser.state} onChange={handleInputChange}></input>
-                        {stateError && (
-                            <p className="text-danger mb-0">Required</p>
-                        )}
-                        {validState && (
-                            <p className="text-danger mb-0">Invalid</p>
-                        )}
+                    <label>State</label>
+                    <input type="text" name="state" value={newUser.state} onChange={handleInputChange}></input>
+                    {stateError && (
+                        <p className="text-danger mb-0">Required</p>
+                    )}
+                    {validState && (
+                        <p className="text-danger mb-0">Invalid</p>
+                    )}
                 </div>
                 <div className="d-flex flex-column col-4 px-1 py-2">
-                        <label>Zip Code</label>
-                        <input type="text" name="zip" value={newUser.zip} onChange={handleInputChange}></input>
-                        {zipError && (
-                            <p className="text-danger mb-0">A Zip Code is Required</p>
-                        )}
-                        {validZip && (
-                            <p className="text-danger mb-0">The Zip Code is Invalid</p>
-                        )}
+                    <label>Zip Code</label>
+                    <input type="text" name="zip" value={newUser.zip} onChange={handleInputChange}></input>
+                    {zipError && (
+                        <p className="text-danger mb-0">A Zip Code is Required</p>
+                    )}
+                    {validZip && (
+                        <p className="text-danger mb-0">The Zip Code is Invalid</p>
+                    )}
                 </div>
             </div>
             <div className="d-flex flex-row col-12">
@@ -303,29 +305,29 @@ function AddUser (props) {
             </div>
             <div className="d-flex flex-row col-12">
                 <div className="d-flex flex-column col-5 px-1 py-2">
-                        <label>Username</label>
-                        <input type="text" name="username" value={newUser.username} onChange={handleInputChange}></input>
-                        {userNameError && (
-                            <p className="text-danger mb-0">A Username is Required</p>
-                        )}
-                        {existError && (
-                            <p className="text-danger mb-0">That Username is Already in Use</p>
-                        )}
-                    </div>
-                    <div className="d-flex flex-column col-5 px-1 py-2">
-                        <label>Please Select a Role</label>
-                        <select name="newRole" onChange={handleInputChange} value={newRole} style={{height: "31px"}}>
-                            <option defaultValue="Select a Role">Select a Role</option>
-                            {userRoles.map(item=><ListItems key={item.id} options={item.title}/>)}
-                        </select>
-                        {roleError && (
-                            <p className="text-danger mb-0">A Role is Required</p>
-                        )}
-                    </div>
-                    <div className="d-flex flex-column col-2 text-center align-self-center">
-                        <label>Administrator</label>
-                        <input type="checkbox" name="admin" checked={newUser.admin} className="mx-auto" onChange={() => setNewUser({...newUser,admin: !newUser.admin})}></input>
-                    </div>
+                    <label>Username</label>
+                    <input type="text" name="username" value={newUser.username} onChange={handleInputChange}></input>
+                    {userNameError && (
+                        <p className="text-danger mb-0">A Username is Required</p>
+                    )}
+                    {existError && (
+                        <p className="text-danger mb-0">That Username is Already in Use</p>
+                    )}
+                </div>
+                <div className="d-flex flex-column col-5 px-1 py-2">
+                    <label>Please Select a Role</label>
+                    <select name="newRole" onChange={handleInputChange} value={newRole} style={{height: "31px"}}>
+                        <option defaultValue="Select a Role">Select a Role</option>
+                        {userRoles.map(item=><ListItems key={item.id} options={item.title}/>)}
+                    </select>
+                    {roleError && (
+                        <p className="text-danger mb-0">A Role is Required</p>
+                    )}
+                </div>
+                <div className="d-flex flex-column col-2 text-center align-self-center">
+                    <label>Administrator</label>
+                    <input type="checkbox" name="admin" checked={newUser.admin} className="mx-auto" onChange={() => setNewUser({...newUser,admin: !newUser.admin})}></input>
+                </div>
             </div>
             <div className="d-flex flex-row col-12 mt-3 justify-content-around">
                 <button className="bg-primary text-light rounded col-3" onClick={handleFormSubmit}>Submit</button>

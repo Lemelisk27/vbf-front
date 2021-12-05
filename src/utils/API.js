@@ -176,6 +176,11 @@ const API = {
         return axios.post(`${URL_PREFIX}/api/users`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    deleteUser:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/users/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

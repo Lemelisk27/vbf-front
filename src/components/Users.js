@@ -79,13 +79,13 @@ function Users (props) {
                 centered>
                 <Modal.Header closeButton className="zs-admin-modal">
                     <Modal.Title id='add-modal'>
-                        <h3>{modalTitle} Users</h3>
+                        <h3>{modalTitle} User</h3>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {addUser ? <AddUser setShowUserModal={setShowUserModal}/>:
-                    (editUser ? <EditUser />:
-                    <DeleteUser />)}
+                    (editUser ? <EditUser setShowUserModal={setShowUserModal}/>:
+                    <DeleteUser setShowUserModal={setShowUserModal}/>)}
                 </Modal.Body>
             </Modal>
             <Modal

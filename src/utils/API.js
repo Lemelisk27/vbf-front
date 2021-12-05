@@ -201,6 +201,11 @@ const API = {
         return axios.put(`${URL_PREFIX}/api/users/roles`, data, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    createInventoryCategory:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/inventory/categories`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

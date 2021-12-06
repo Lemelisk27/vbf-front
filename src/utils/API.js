@@ -276,6 +276,31 @@ const API = {
         return axios.delete(`${URL_PREFIX}/api/inventory/units/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    createSpecies:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/animals/species`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    editSpecies:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/animals/species`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateAnimalSpecies:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/animals/species/animals`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateBreedSpecies:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/animals/species/breeds`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    deleteSpecies:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/animals/species/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

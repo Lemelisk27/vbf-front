@@ -256,6 +256,26 @@ const API = {
         return axios.delete(`${URL_PREFIX}/api/inventory/items/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    createUnit:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/inventory/units`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    editUnit:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/inventory/units`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateItemUnits:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/inventory/units/items`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    deleteUnit:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/inventory/units/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

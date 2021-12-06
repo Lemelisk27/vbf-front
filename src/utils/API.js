@@ -221,6 +221,41 @@ const API = {
         return axios.delete(`${URL_PREFIX}/api/inventory/categories/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getUnits:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/inventory/units`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    createInventoryItem:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/inventory/items`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    createInventoryJoin:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/inventory/joins`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    getInventoryJoins:(tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/inventory/joins`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateJoins:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/inventory/joins`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateOldInventoryItems:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/inventory/items`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    deleteInventoryItem:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/inventory/items/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

@@ -3,6 +3,9 @@ import { Modal } from "react-bootstrap";
 import AddCategory from "./AddCategory";
 import EditCategory from "./EditCategory";
 import DeleteCategory from "./DeleteCategory";
+import AddItem from "./AddItem";
+import EditItem from "./EditItem";
+import DeleteItem from "./DeleteItem";
 
 function AdminInventory (props) {
     const [showCategoryModal, setShowCategoryModal] = useState(false)
@@ -11,6 +14,8 @@ function AdminInventory (props) {
     const [modalTitle, setModalTitle] = useState("")
     const [addNewCategory, setAddNewCategory] = useState(true)
     const [editNewCategory, setEditNewCategory] = useState(false)
+    const [addNewItem, setAddNewItem] = useState(true)
+    const [editNewItem, setEditNewItem] = useState(false)
 
     const addCategory = (e) => {
         e.preventDefault()
@@ -40,18 +45,25 @@ function AdminInventory (props) {
         e.preventDefault()
         setShowItemModal(true)
         setModalTitle("Add")
+        setAddNewItem(true)
+        setEditNewItem(false)
+        
     }
 
     const editItem = (e) => {
         e.preventDefault()
         setShowItemModal(true)
         setModalTitle("Edit")
+        setAddNewItem(false)
+        setEditNewItem(true)
     }
 
     const deleteItem = (e) => {
         e.preventDefault()
         setShowItemModal(true)
         setModalTitle("Delete")
+        setAddNewItem(false)
+        setEditNewItem(false)
     }
 
     const addUnit = (e) => {
@@ -127,7 +139,9 @@ function AdminInventory (props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>Item Modal</p>
+                    {addNewItem ? <AddItem setShowItemModal={setShowItemModal}/>:
+                    (editNewItem ? <EditItem setShowItemModal={setShowItemModal}/>:
+                    <DeleteItem setShowItemModal={setShowItemModal}/>)}
                 </Modal.Body>
             </Modal>
             <Modal

@@ -301,6 +301,26 @@ const API = {
         return axios.delete(`${URL_PREFIX}/api/animals/species/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    createBreed:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/animals/breeds`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    editBreed:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/animals/breeds`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    updateAnimalBreed:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/animals/breeds/animals`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    deleteBreed:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/animals/breeds/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

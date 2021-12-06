@@ -3,6 +3,9 @@ import { Modal } from "react-bootstrap";
 import AddSpecies from "./AddSpecies";
 import EditSpecies from "./EditSpecies";
 import DeleteSpecies from "./DeleteSpecies";
+import AddBreed from "./AddBreed";
+import EditBreed from "./EditBreed";
+import DeleteBreed from "./DeleteBreed";
 
 function AdminAnimals (props) {
     const [showSpeciesModal, setShowSpeciesModal] = useState(false)
@@ -11,6 +14,8 @@ function AdminAnimals (props) {
     const [modalTitle, setModalTitle] = useState("")
     const [addSpecies, setAddSpecies] = useState(true)
     const [editSpecies, setEditSpecies] = useState(false)
+    const [addBreed, setAddBreed] = useState(true)
+    const [editBreed, setEditBreed] = useState(false)
 
     const addSpeciesBtn = (e) => {
         e.preventDefault()
@@ -40,18 +45,24 @@ function AdminAnimals (props) {
         e.preventDefault()
         setShowBreedModal(true)
         setModalTitle("Add")
+        setAddBreed(true)
+        setEditBreed(false)
     }
 
     const editBreedBtn = (e) => {
         e.preventDefault()
         setShowBreedModal(true)
         setModalTitle("Edit")
+        setAddBreed(false)
+        setEditBreed(true)
     }
 
     const deleteBreedBtn = (e) => {
         e.preventDefault()
         setShowBreedModal(true)
         setModalTitle("Delete")
+        setAddBreed(false)
+        setEditBreed(false)
     }
 
     const addAllergyBtn = (e) => {
@@ -127,7 +138,9 @@ function AdminAnimals (props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>Breed Modal</p>
+                    {addBreed ? <AddBreed setShowBreedModal={setShowBreedModal}/>:
+                    (editBreed ? <EditBreed setShowBreedModal={setShowBreedModal}/>:
+                    <DeleteBreed setShowBreedModal={setShowBreedModal}/>)}
                 </Modal.Body>
             </Modal>
             <Modal

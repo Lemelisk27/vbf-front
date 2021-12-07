@@ -11,3 +11,7 @@
 .zs-modal-head {
     background: #995fa3;
 }
+
+.zs-invoice-modal {
+    min-height: 80vh;
+}

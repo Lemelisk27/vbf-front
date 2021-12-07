@@ -336,6 +336,16 @@ const API = {
         return axios.delete(`${URL_PREFIX}/api/allergies/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    getClientInvoice:(id,tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/invoice/client/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    getInvoiceById:(id,tkn)=>{
+        return axios.get(`${URL_PREFIX}/api/invoice/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

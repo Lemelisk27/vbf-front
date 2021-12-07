@@ -16,6 +16,7 @@ Required Dependencies:
 - @devexpress/dx-react-scheduler-material-ui
 - @material-ui/core
 - @material-ui/icons
+- @react-pdf/renderer
 - @testing-library/jest-dom
 - @testing-library/react
 - @testing-library/user-event

@@ -126,7 +126,7 @@ function ClientDetails (props) {
                 aria-labelledby="add-modal"
                 centered>
                 <Modal.Header closeButton className="zs-modal-head">
-                    <h3>Invoice Modal</h3>
+                    <h3>Invoice</h3>
                 </Modal.Header>
                 <Modal.Body className="zs-invoice-modal">
                     {invoiceSelected ? (

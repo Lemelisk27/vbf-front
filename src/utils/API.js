@@ -321,6 +321,21 @@ const API = {
         return axios.delete(`${URL_PREFIX}/api/animals/breeds/${id}`, {headers:{
             "Authorization": `Bearer ${tkn}`
         }})
+    },
+    createAllergy:(data,tkn)=>{
+        return axios.post(`${URL_PREFIX}/api/allergies`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    editAllergy:(data,tkn)=>{
+        return axios.put(`${URL_PREFIX}/api/allergies`, data, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
+    },
+    deleteAllergy:(id,tkn)=>{
+        return axios.delete(`${URL_PREFIX}/api/allergies/${id}`, {headers:{
+            "Authorization": `Bearer ${tkn}`
+        }})
     }
 }
 

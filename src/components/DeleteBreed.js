@@ -12,7 +12,8 @@ function DeleteBreed (props) {
     const [breedError, setBreedError] = useState(false)
     const [breed, setBreed] = useState({
         id: 0,
-        BreedId: 0
+        BreedId: 0,
+        SpeciesId: 0
     })
 
     useEffect(()=>{
@@ -25,7 +26,8 @@ function DeleteBreed (props) {
             if (breedList[i].name === selectBreed) {
                 setBreed({
                     ...breed,
-                    id: breedList[i].id
+                    id: breedList[i].id,
+                    SpeciesId: breedList[i].SpeciesId
                 })
             }
         }
@@ -110,7 +112,7 @@ function DeleteBreed (props) {
                         <label>If there are any animals assigned to {selectBreed}, where would you like them re-assigned?</label>
                         <select name="newBreed" style={{height: "31px"}} value={newBreed} onChange={handleInputChange}>
                             <option defaultValue="Select a Breed">Select a Breed</option>
-                            {breedList.filter(name=>name.name !== selectBreed).map(item=><ListItems key={item.id} options={item.name}/>)}
+                            {breedList.filter(name=>name.name !== selectBreed).filter(species => species.SpeciesId === breed.SpeciesId).map(item=><ListItems key={item.id} options={item.name}/>)}
                         </select>
                         {breedError && (
                             <p className="text-danger mb-0">A new Breed is Required</p>

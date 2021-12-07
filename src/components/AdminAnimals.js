@@ -6,6 +6,9 @@ import DeleteSpecies from "./DeleteSpecies";
 import AddBreed from "./AddBreed";
 import EditBreed from "./EditBreed";
 import DeleteBreed from "./DeleteBreed";
+import AddAllergy from "./AddAllergy";
+import EditAllergy from "./EditAllergy";
+import DeleteAllergy from "./DeleteAllergy";
 
 function AdminAnimals (props) {
     const [showSpeciesModal, setShowSpeciesModal] = useState(false)
@@ -16,6 +19,8 @@ function AdminAnimals (props) {
     const [editSpecies, setEditSpecies] = useState(false)
     const [addBreed, setAddBreed] = useState(true)
     const [editBreed, setEditBreed] = useState(false)
+    const [addAllergy, setAddAllergy] = useState(true)
+    const [editAllergy, setEditAllergy] = useState(false)
 
     const addSpeciesBtn = (e) => {
         e.preventDefault()
@@ -69,18 +74,24 @@ function AdminAnimals (props) {
         e.preventDefault()
         setShowAllergyModal(true)
         setModalTitle("Add")
+        setAddAllergy(true)
+        setEditAllergy(false)
     }
 
     const editAllergyBtn = (e) => {
         e.preventDefault()
         setShowAllergyModal(true)
         setModalTitle("Edit")
+        setAddAllergy(false)
+        setEditAllergy(true)
     }
 
     const deleteAllergyBtn = (e) => {
         e.preventDefault()
         setShowAllergyModal(true)
         setModalTitle("Delete")
+        setAddAllergy(false)
+        setEditAllergy(false)
     }
 
     return (
@@ -151,11 +162,13 @@ function AdminAnimals (props) {
                 centered>
                 <Modal.Header closeButton className="zs-admin-modal">
                     <Modal.Title id='add=modal'>
-                        <h3>{modalTitle} Allergy</h3>
+                    <h3>{modalTitle} Allergy</h3>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>Allergy Modal</p>
+                    {addAllergy ? <AddAllergy setShowAllergyModal={setShowAllergyModal}/>:
+                    (editAllergy ? <EditAllergy setShowAllergyModal={setShowAllergyModal}/>:
+                    <DeleteAllergy setShowAllergyModal={setShowAllergyModal}/>)}
                 </Modal.Body>
             </Modal>
         </div>
